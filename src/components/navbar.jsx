@@ -6,7 +6,7 @@ class Navbar extends Component {
       <div>
         <nav className="navbar navbar-light bg-light">
           <a className="navbar-brand ml-4" href="/">
-            <div className="bg-white">
+            <div className="bg-white p-2">
               <img
                 src="https://s0.hfdstatic.com/sites/higux/v3.3.44/images/logo.svg"
                 alt="The Hartford"

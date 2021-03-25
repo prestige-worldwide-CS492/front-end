@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
+import axios from "axios";
 
 class SubmitClaim extends Component {
   state = {};
@@ -25,6 +26,22 @@ class SubmitClaim extends Component {
     event.preventDefault();
     console.log("form submitted!");
 
+    const newClaim = {
+      policy_number: this.state.policyNumber,
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      category: this.state.category,
+      description: this.state.description,
+    };
+    console.log(newClaim);
+    // axios.post("http://localhost:4000/claims", newClaim).then(
+    //   (response) => {
+    //     console.log(response);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
     this.setState({
       policyNumber: "",
       firstName: "",

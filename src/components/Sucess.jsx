@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 
-class ViewClaim extends Component {
+class Success extends Component {
+  state = {};
   render() {
     return (
       <div>
         <Navbar></Navbar>
-        <div className="container bg-info ">
-          <h1>View claim page</h1>{" "}
+        <div className="container">
+          <h1>Success Page</h1>
         </div>
       </div>
     );
   }
 }
 
-export default ViewClaim;
+export default Success;

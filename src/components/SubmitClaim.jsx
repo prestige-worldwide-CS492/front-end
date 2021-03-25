@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
 import axios from "axios";
+import { Redirect } from "react-router";
 
 class SubmitClaim extends Component {
   state = {};
@@ -19,11 +20,13 @@ class SubmitClaim extends Component {
       lastName: "",
       category: "",
       description: "",
+      redirect: "",
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    //if valid then:
     console.log("form submitted!");
 
     const newClaim = {
@@ -36,7 +39,9 @@ class SubmitClaim extends Component {
     console.log(newClaim);
     // axios.post("http://localhost:4000/claims", newClaim).then(
     //   (response) => {
+    this.state.redirect = "Success";
     //     console.log(response);
+    //
     //   },
     //   (error) => {
     //     console.log(error);
@@ -82,6 +87,9 @@ class SubmitClaim extends Component {
   };
 
   render() {
+    if (this.state.redirect === "Success") {
+      return <Redirect to="/Success" />;
+    }
     return (
       <div>
         <Navbar></Navbar>

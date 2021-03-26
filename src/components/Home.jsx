@@ -13,7 +13,7 @@ class Home extends Component {
             Submit a claim
           </a>
           <a href="/ViewClaim" className="btn btn-primary">
-            view a Submitted claim
+            Vi3w a Submitted claim
           </a>
         </div>
       </div>

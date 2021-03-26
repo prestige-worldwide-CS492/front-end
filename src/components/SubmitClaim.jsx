@@ -13,6 +13,7 @@ class SubmitClaim extends Component {
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleFullAddress = this.handleFullAddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       policyNumber: "",
@@ -21,6 +22,7 @@ class SubmitClaim extends Component {
       category: "",
       description: "",
       redirect: "",
+      fullAddress: "",
     };
   }
 
@@ -35,6 +37,7 @@ class SubmitClaim extends Component {
       last_name: this.state.lastName,
       category: this.state.category,
       description: this.state.description,
+      address: this.state.fullAddress,
     };
     console.log(newClaim);
     // axios.post("http://localhost:4000/claims", newClaim).then(
@@ -83,6 +86,12 @@ class SubmitClaim extends Component {
   handleDescriptionChange = (event) => {
     this.setState({
       description: event.target.value,
+    });
+  };
+
+  handleFullAddress = (event) => {
+    this.setState({
+      fullAddress: event.target.value,
     });
   };
 
@@ -142,14 +151,33 @@ class SubmitClaim extends Component {
                 value={this.state.category}
                 onChange={this.handleCategoryChange}
               >
-                <option value="option1">option 1</option>
-                <option value="option2">option 2</option>
-                <option value="option3">option 3</option>
-                <option value="option4">option 4</option>
-                <option value="option5">option 5</option>
+                <option value="Auto-liability-coverage">
+                  Auto liability coverage
+                </option>
+                <option value="Uninsured-and-under-insured-motorist-coverage">
+                  Uninsured and under-insured motorist coverage{" "}
+                </option>
+                <option value="Comprehensive-coverage">
+                  Comprehensive Coverage
+                </option>
+                <option value="Collision-coverage">Collision Coverage</option>
+                <option value="Medical-payments-coverage">
+                  Medical payments Coverage
+                </option>
+                <option value="Personal-injury-protection">
+                  Personal injury protection
+                </option>
               </select>
             </div>
-
+            <div className="mt-3">
+              <label htmlFor="full-address">Address</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.fullAddress}
+                onChange={this.handleFullAddress}
+              />
+            </div>
             <div className="mt-3">
               <label htmlFor="description">Description</label>
               <textarea

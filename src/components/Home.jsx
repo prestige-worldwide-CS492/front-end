@@ -9,10 +9,10 @@ class Home extends Component {
         <Navbar></Navbar>
         <div className="container">
           <h1>Home page</h1>
-          <a href="/SubmitClaim" class="btn btn-primary">
+          <a href="/SubmitClaim" className="btn btn-primary">
             Submit a claim
           </a>
-          <a href="/ViewClaim" class="btn btn-primary">
+          <a href="/ViewClaim" className="btn btn-primary">
             view a Submitted claim
           </a>
         </div>

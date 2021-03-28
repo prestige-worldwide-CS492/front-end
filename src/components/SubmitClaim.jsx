@@ -40,16 +40,14 @@ class SubmitClaim extends Component {
       address: this.state.fullAddress,
     };
     console.log(newClaim);
-    // axios.post("http://localhost:4000/claims", newClaim).then(
-    //   (response) => {
-    this.state.redirect = "Success";
-    //     console.log(response);
-    //
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
+
+    fetch('http://localhost:8080/claims', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newClaim)
+    })
+      .then(x => x.status === 200 && this.setState({ redirect: 'Success' }))
+ 
     this.setState({
       policyNumber: "",
       firstName: "",

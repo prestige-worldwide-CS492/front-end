@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import SubmitClaim from "./components/SubmitClaim";
 import ViewClaim from "./components/ViewClaim";
 import Success from "./components/Sucess";
+import Claim from "./components/Claim";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/SubmitClaim" component={SubmitClaim} />
       <Route path="/ViewClaim" component={ViewClaim} />
       <Route path="/Success" component={Success} />
+      <Route path="/claim" component={Claim} />
     </Router>
   );
 }

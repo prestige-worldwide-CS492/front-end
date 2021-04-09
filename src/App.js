@@ -6,6 +6,7 @@ import ViewClaim from "./components/ViewClaim";
 import Success from "./components/Sucess";
 import Claim from "./components/Claim";
 import Claims from "./components/Claims";
+import SearchClaim from "./components/SearchClaim";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
       <Route path="/Success" component={Success} />
       <Route path="/Claim" component={Claim} />
       <Route path="/Claims" component={Claims} />
+      <Route path="/SearchClaim" component={SearchClaim} />
     </Router>
   );
-}
-
+  }
 export default App;

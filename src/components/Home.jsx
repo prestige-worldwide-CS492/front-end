@@ -15,6 +15,9 @@ class Home extends Component {
           <a href="/ViewClaim" className="btn btn-primary">
             View a Submitted claim
           </a>
+          <a href="/SearchClaim" className="btn btn-primary">
+            View the Insurer Page
+          </a>
         </div>
       </div>
     );

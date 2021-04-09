@@ -53,7 +53,7 @@ function Claim(props) {
             <h2>{data.date ?? '3.27.2021'}</h2>
 
             <h6 style={{ marginTop: '40px' }}>Location</h6>
-            <h2>{props.address ?? '357 Brittany Farms Rd'}</h2>
+            <h2>{data.address ?? '357 Brittany Farms Rd'}</h2>
           </div>
 
           <div className="col-md-8">

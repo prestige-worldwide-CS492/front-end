@@ -12,7 +12,7 @@ function Claim(props) {
   return <div className="container">
     <ul className="breadcrumb">
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/Claims">Claims</Link></li>
+      <li><Link to="/SeachClaim">Claims</Link></li>
       <li className="active">{props.match.params.claimID ?? '00000000-0000-0000-0000-000000000000'}</li>
     </ul>
 

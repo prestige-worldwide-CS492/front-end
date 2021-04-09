@@ -140,7 +140,7 @@ class SubmitClaim extends Component {
                 />
               </div>
             </div>
-            <div className="mt-3">
+            <div className="row">
               <label htmlFor="category">Choose a category</label>
               <select
                 className="form-control"
@@ -167,7 +167,7 @@ class SubmitClaim extends Component {
                 </option>
               </select>
             </div>
-            <div className="mt-3">
+            <div className="row">
               <label htmlFor="full-address">Address</label>
               <input
                 type="text"
@@ -176,7 +176,7 @@ class SubmitClaim extends Component {
                 onChange={this.handleFullAddress}
               />
             </div>
-            <div className="mt-3">
+            <div className="row">
               <label htmlFor="description">Description</label>
               <textarea
                 className="form-control"
@@ -189,9 +189,11 @@ class SubmitClaim extends Component {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
+            <div className="row">
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

@@ -19,5 +19,6 @@ function App() {
       <Route path="/SearchClaim" component={SearchClaim} />
     </Router>
   );
-  }
+}
+
 export default App;

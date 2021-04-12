@@ -30,7 +30,7 @@ function SearchClaim(rows) {
                               <th scope="col" class="col-xs-2">FIRST NAME</th>
                               <th scope="col" class="col-xs-2">POLICY NUMBER</th>
                               <th scope="col" class="col-xs-2">ACCIDENT ADDRESS</th>
-                              <th scope="col" class="col-xs-10">ACCIDENT REPORT</th>
+                              <th scope="col" class="col-xs-10">ACCIDENT DESCRIPTION FROM THE CLAIMANT</th>
                               </tr>
                               </thead>                                 
                     
@@ -50,7 +50,7 @@ function SearchClaim(rows) {
                       <td><span class="data-prefix-xs xs-prefix-vertical">FIRST NAME:</span>{val.first_name}</td>
                       <td><span class="data-prefix-xs xs-prefix-vertical">POLICY NUMBER</span>{val.insurance_number}</td>
                       <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT ADDRESS</span>{val.address}</td>
-                      <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT REPORT</span>{val.report}
+                      <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT DESCRIPTION FROM THE CLAIMANT</span>{val.report}
                       </td>
                       </tr>
                       </tbody>

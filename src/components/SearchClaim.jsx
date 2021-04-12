@@ -46,11 +46,11 @@ function SearchClaim(rows) {
                       return (                    
                       <tbody>
                       <tr>
-                      <td><span class="data-prefix-xs xs-prefix-vertical">LAST NAME:</span>{val.last_name}</td>
-                      <td><span class="data-prefix-xs xs-prefix-vertical">FIRST NAME:</span>{val.first_name}</td>
-                      <td><span class="data-prefix-xs xs-prefix-vertical">POLICY NUMBER</span>{val.insurance_number}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">LAST NAME</span>{val.last_name}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">FIRST NAME</span>{val.first_name}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">POLICY NUMBER</span>{val.policy_number}</td>
                       <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT ADDRESS</span>{val.address}</td>
-                      <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT DESCRIPTION FROM THE CLAIMANT</span>{val.report}
+                      <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT DESCRIPTION FROM THE CLAIMANT</span>{val.description}
                       </td>
                       </tr>
                       </tbody>

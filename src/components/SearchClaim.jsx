@@ -39,7 +39,7 @@ function SearchClaim(rows) {
                       return val
                      } else if (val.last_name.toLowerCase().includes(searchTerm.toLowerCase())) {
                       return val
-                    }   else if (val.insurance_number.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
+                    }   else if (val.policy_number.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
                       return val
                     }         
                   }).map((val, key) => {

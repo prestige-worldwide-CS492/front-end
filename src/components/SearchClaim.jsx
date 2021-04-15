@@ -1,21 +1,20 @@
 
 import React, { Component } from "react";
 import Navbar from "./navbar";
+import "../App.Insurer.css";
 //import axios from "axios";
 //import { Redirect } from "react-router"
-import "../App.Insurer.css";
 import JSONDATA from './MOCK_DATA.json'
 import {useState} from 'react' 
 
-function SearchClaim() {
-  const [searchTerm, setSearchTerm] = useState("");  
+function SearchClaim(rows) {
+  const [searchTerm, setSearchTerm] = useState(""); 
   return (
     <div>
       <Navbar></Navbar>
-        <div className="container p-4">
-        <div className="row-1">
+        <div className="container p-4">    
               <div className="mt-4">               
-                 <label htmlFor="last_name">Enter Claimants Last Name   </label>          
+                 <label htmlFor="last_name">Enter Claimants Last Name</label>          
                    <input 
                      type="text" 
                      className="form-control"
@@ -23,27 +22,45 @@ function SearchClaim() {
                       onChange={(event) => {
                         setSearchTerm(event.target.value);
                       }}
-                    />
+                    />                   
+                     <table class="table table-striped">
+                          <thead>
+                              <tr>
+                              <th scope="col" class="col-xs-2">LAST NAME</th>
+                              <th scope="col" class="col-xs-2">FIRST NAME</th>
+                              <th scope="col" class="col-xs-2">POLICY NUMBER</th>
+                              <th scope="col" class="col-xs-2">ACCIDENT ADDRESS</th>
+                              <th scope="col" class="col-xs-10">ACCIDENT DESCRIPTION FROM THE CLAIMANT</th>
+                              </tr>
+                              </thead>                                 
+                    
                    {JSONDATA.filter((val)=> {
                      if(searchTerm == "") {
                       return val
                      } else if (val.last_name.toLowerCase().includes(searchTerm.toLowerCase())) {
                       return val
-                    }            
+                    }   else if (val.policy_number.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
+                      return val
+                    }         
                   }).map((val, key) => {
-                      return (
-                      <div className="claimant" key={key}>
-                        LAST NAME:   <p>{val.last_name}</p>
-                        FIRST NAME:   <p>{val.first_name}</p>
-                        POLICY NUMBER:   <p>{val.insurance_number}</p>
-                        EMAIL:   <p>{val.email}</p>
-                      </div>  
+                      return (                    
+                      <tbody>
+                      <tr>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">LAST NAME</span>{val.last_name}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">FIRST NAME</span>{val.first_name}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">POLICY NUMBER</span>{val.policy_number}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT ADDRESS</span>{val.address}</td>
+                      <td><span class="data-prefix-xs xs-prefix-vertical">ACCIDENT DESCRIPTION FROM THE CLAIMANT</span>{val.description}
+                      </td>
+                      </tr>
+                      </tbody>
                     );
-                  })}
+                  }
+                  )}
+                  </table>
+                </div>
            </div>
-         </div>
-        </div>
-      </div>
+         </div>        
    );  
 }           
 export default SearchClaim;

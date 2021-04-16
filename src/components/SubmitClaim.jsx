@@ -230,56 +230,6 @@ class SubmitClaim extends Component {
                   required
                 />
               </div>
-              <div className="row">
-                <label htmlFor="category">Choose a category</label>
-                <select
-                  className="form-control"
-                  name="category"
-                  id="category"
-                  value={this.state.category}
-                  onChange={this.handleCategoryChange}
-                >
-                  <option value="Auto-liability-coverage">
-                    Auto liability coverage
-                  </option>
-                  <option value="Uninsured-and-under-insured-motorist-coverage">
-                    Uninsured and under-insured motorist coverage{" "}
-                  </option>
-                  <option value="Comprehensive-coverage">
-                    Comprehensive Coverage
-                  </option>
-                  <option value="Collision-coverage">Collision Coverage</option>
-                  <option value="Medical-payments-coverage">
-                    Medical payments Coverage
-                  </option>
-                  <option value="Personal-injury-protection">
-                    Personal injury protection
-                  </option>
-                </select>
-              </div>
-            
-              <div className="row">
-                <label htmlFor="full-address">Address</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={this.state.fullAddress}
-                  onChange={this.handleFullAddress}
-                />
-              </div>
-            
-              <div className="row">
-                <label htmlFor="description">Description</label>
-                <textarea
-                  className="form-control"
-                  type="text"
-                  name="description"
-                  id="description"
-                  rows="4"
-                  value={this.state.description}
-                  onChange={this.handleDescriptionChange}
-                />
-              </div>
 
               <div className="row">
                 <button type="submit" className="btn btn-primary">

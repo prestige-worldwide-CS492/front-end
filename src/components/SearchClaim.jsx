@@ -7,67 +7,89 @@ import "../App.Insurer.css";
 import JSONDATA from "./MOCK_DATA.json";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import "../formLayout.css";
 
 function SearchClaim() {
-  const [claims, setClaims] = useState([])
-  const history = useHistory()
+  const [claims, setClaims] = useState([]);
+  const history = useHistory();
 
   const query = {
     firstName: "",
     lastName: "",
-    policyNumber: ""
+    policyNumber: "",
   };
 
   return (
     <div>
       <Navbar></Navbar>
       <div className="container p-4">
-        <div className="mt-4">
-          <label htmlFor="last_name">Enter Claimants Last Name</label>
-          <input
-            name="last_name"
-            type="text"
-            className="form-control"
-            placeholder="Search..."
-            onChange={(event) => {
-              query.lastName = event.target.value;
-            }}
-          />
+        <div className="mt-4 ">
+          <div className="background-container-soft">
+            <div className="background-container-soft-content">
+              <div className="form-group">
+                <label htmlFor="last_name" className="label-align">
+                  Enter Claimant's Last Name
+                </label>
+                <input
+                  name="last_name"
+                  type="text"
+                  className="form-control"
+                  placeholder="Search..."
+                  onChange={(event) => {
+                    query.lastName = event.target.value;
+                  }}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="first_name" className="label-align">
+                  Enter Claimant's First Name
+                </label>
+                <input
+                  name="first_name"
+                  type="text"
+                  className="form-control"
+                  placeholder="Search..."
+                  onChange={(event) => {
+                    query.firstName = event.target.value;
+                  }}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="policy_number" className="label-align">
+                  Enter Claimant's Policy Number
+                </label>
+                <input
+                  name="policy_number"
+                  type="text"
+                  className="form-control"
+                  placeholder="Search..."
+                  onChange={(event) => {
+                    query.policyNumber = event.target.value;
+                  }}
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-secondary"
+                onClick={() => {
+                  let base = "http://localhost:8080/claims";
 
-          <label htmlFor="first_name">Enter Claimants First Name</label>
-          <input
-            name="first_name"
-            type="text"
-            className="form-control"
-            placeholder="Search..."
-            onChange={(event) => {
-              query.firstName = event.target.value;
-            }}
-          />
+                  if (query.firstName !== "")
+                    base += `?firstName=${query.firstName}`;
+                  if (query.lastName !== "")
+                    base += `?lastName=${query.lastName}`;
+                  if (query.policyNumber !== "")
+                    base += `?policyNumber=${query.policyNumber}`;
 
-          <label htmlFor="policy_number">Enter Claimants Policy Number</label>
-          <input
-            name="policy_number"
-            type="text"
-            className="form-control"
-            placeholder="Search..."
-            onChange={(event) => {
-              query.policyNumber = event.target.value;
-            }}
-          />
-
-          <button type="submit" className="btn btn-primary" onClick={() => {
-            let base = "http://localhost:8080/claims"
-
-            if (query.firstName !== "") base += `?firstName=${query.firstName}`
-            if (query.lastName !== "") base += `?lastName=${query.lastName}`
-            if (query.policyNumber !== "") base += `?policyNumber=${query.policyNumber}`
-
-            fetch(base)
-              .then(res => res.json())
-              .then(res => setClaims(res))
-          }}>Submit</button>
-
+                  fetch(base)
+                    .then((res) => res.json())
+                    .then((res) => setClaims(res));
+                }}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
 
           <table className="table table-striped">
             <thead>
@@ -91,7 +113,7 @@ function SearchClaim() {
             </thead>
 
             <tbody>
-              {claims.map((claim, i) =>
+              {claims.map((claim, i) => (
                 <tr key={i} onClick={() => history.push(`/Claim/${claim._id}`)}>
                   <td>{claim.lastName}</td>
                   <td>{claim.firstName}</td>
@@ -99,7 +121,7 @@ function SearchClaim() {
                   <td>{claim.address}</td>
                   <td>{claim.description}</td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
         </div>

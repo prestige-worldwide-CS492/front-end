@@ -55,7 +55,6 @@ class ViewClaim extends Component {
             </h2>
             <form
               onSubmit={this.handleSubmit}
-              method="POST"
               className="form-selectors"
               data-toggle="validator"
               data-disable="false"

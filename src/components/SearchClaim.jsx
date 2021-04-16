@@ -10,6 +10,7 @@ import { Redirect } from "react-router";
 
 function SearchClaim(rows) {
   const [searchTerm, setSearchTerm] = useState("");
+  //for some reason this isn't workinng
   // let JSONDATA = [];
   // fetch("http://localhost:8080/claims")
   //   .then((response) => response.json())

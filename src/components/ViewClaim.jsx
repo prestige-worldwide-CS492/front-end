@@ -47,7 +47,7 @@ class ViewClaim extends Component {
         <div className="container p-4">
           <div className="card top">
             <h2 className="underlined">
-              Submit your claim
+              View your claim
               <br />
               <small style={{ color: "#3a5a78" }}>
                 All information is required unless it’s listed as optional.

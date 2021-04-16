@@ -12,6 +12,7 @@ class ViewClaim extends Component {
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handlePolicyNumberChange = this.handlePolicyNumberChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       firstName: "",
@@ -37,6 +38,15 @@ class ViewClaim extends Component {
     });
   };
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let form = document.getElementById("form_id");
+    let isValidForm = form.checkValidity();
+    if (isValidForm) {
+      console.log("submitted");
+    }
+  };
+
   render() {
     if (this.state.redirect === "Success") {
       return <Redirect to="/Success" />;
@@ -54,10 +64,11 @@ class ViewClaim extends Component {
               </small>
             </h2>
             <form
+              id="form_id"
               onSubmit={this.handleSubmit}
               className="form-selectors"
               data-toggle="validator"
-              data-disable="false"
+              data-disable="true"
               data-delay="999999"
             >
               <div className="row">

@@ -29,31 +29,36 @@ class SubmitClaim extends Component {
   handleSubmit(event) {
     event.preventDefault();
     //if valid then:
-    console.log("form submitted!");
+    let form = document.getElementById("form_id");
+    let isValidForm = form.checkValidity();
+    if (isValidForm) {
+      console.log("form submitted");
+      const newClaim = {
+        policy_number: this.state.policyNumber,
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        category: this.state.category,
+        description: this.state.description,
+        address: this.state.fullAddress,
+      };
+      console.log(newClaim);
 
-    const newClaim = {
-      policy_number: this.state.policyNumber,
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      category: this.state.category,
-      description: this.state.description,
-      address: this.state.fullAddress,
-    };
-    console.log(newClaim);
+      fetch("http://localhost:8080/claims", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newClaim),
+      }).then(
+        (x) => x.status === 200 && this.setState({ redirect: "Success" })
+      );
 
-    fetch("http://localhost:8080/claims", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newClaim),
-    }).then((x) => x.status === 200 && this.setState({ redirect: "Success" }));
-
-    this.setState({
-      policyNumber: "",
-      firstName: "",
-      lastName: "",
-      category: "",
-      description: "",
-    });
+      this.setState({
+        policyNumber: "",
+        firstName: "",
+        lastName: "",
+        category: "",
+        description: "",
+      });
+    }
   }
 
   handlePolicyNumberChange = (event) => {
@@ -111,10 +116,11 @@ class SubmitClaim extends Component {
 
             <form
               onSubmit={this.handleSubmit}
+              id="form_id"
               method="POST"
               className="form-selectors"
               data-toggle="validator"
-              data-disable="false"
+              data-disable="true"
               data-delay="999999"
             >
               <div className="row">

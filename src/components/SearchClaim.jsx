@@ -88,8 +88,8 @@ function SearchClaim() {
             </thead>
 
             <tbody>
-              {claims.map(claim =>
-                <tr onClick={() => history.push(`/Claim/${claim._id}`)}>
+              {claims.map((claim, i) =>
+                <tr key={i} onClick={() => history.push(`/Claim/${claim._id}`)}>
                   <td>{claim.lastName}</td>
                   <td>{claim.firstName}</td>
                   <td>{claim.policyNumber}</td>

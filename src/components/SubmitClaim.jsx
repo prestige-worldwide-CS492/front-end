@@ -108,7 +108,7 @@ class SubmitClaim extends Component {
                 All information is required unless it’s listed as optional.
               </small>
             </h2>
-            
+
             <form
               onSubmit={this.handleSubmit}
               method="POST"
@@ -119,7 +119,9 @@ class SubmitClaim extends Component {
             >
               <div className="row">
                 <div className="col-md-4 form-group has-feedback">
-                  <label htmlFor="policy-number" className="control-label">Policy Number</label>
+                  <label htmlFor="policy-number" className="control-label">
+                    Policy Number
+                  </label>
                   <input
                     type="number"
                     className="form-control"
@@ -231,11 +233,9 @@ class SubmitClaim extends Component {
                 />
               </div>
 
-              <div className="row">
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </div>
+              <button type="submit" className="btn btn-secondary ">
+                Submit
+              </button>
             </form>
           </div>
         </div>

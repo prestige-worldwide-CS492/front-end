@@ -53,11 +53,17 @@ function SearchClaim() {
             }}
           />
 
-          <button type="submit" className="btn btn-primary" onClick={() =>
-            fetch(`http://localhost:8080/claims`)
+          <button type="submit" className="btn btn-primary" onClick={() => {
+            let base = "http://localhost:8080/claims"
+
+            if (query.firstName !== "") base += `?firstName=${query.firstName}`
+            if (query.lastName !== "") base += `?firstName=${query.lastName}`
+            if (query.policyNumber !== "") base += `?firstName=${query.policyNumber}`
+
+            fetch(base)
               .then(res => res.json())
               .then(res => setClaims(res))
-          }>Submit</button>
+          }}>Submit</button>
 
 
           <table className="table table-striped">

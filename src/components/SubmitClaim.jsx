@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./navbar";
-import axios from "axios";
+import "../formLayout.css";
 import { Redirect } from "react-router";
 
 class SubmitClaim extends Component {
@@ -41,13 +41,12 @@ class SubmitClaim extends Component {
     };
     console.log(newClaim);
 
-    fetch('http://localhost:8080/claims', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newClaim)
-    })
-      .then(x => x.status === 200 && this.setState({ redirect: 'Success' }))
- 
+    fetch("http://localhost:8080/claims", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newClaim),
+    }).then((x) => x.status === 200 && this.setState({ redirect: "Success" }));
+
     this.setState({
       policyNumber: "",
       firstName: "",
@@ -101,98 +100,142 @@ class SubmitClaim extends Component {
       <div>
         <Navbar></Navbar>
         <div className="container p-3">
-          <form onSubmit={this.handleSubmit} method="POST">
-            <div className="row">
-              <div className="col">
-                <label htmlFor="policy-number">Policy Number</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="policy-number"
-                  placeholder="Enter policy number"
-                  name="policyNumber"
-                  value={this.state.policyNumber}
-                  onChange={this.handlePolicyNumberChange}
-                />
-              </div>
-              <div className="col">
-                <label htmlFor="first-name">First Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="first-name"
-                  placeholder="Enter First Name"
-                  name="firstName"
-                  value={this.state.firstName}
-                  onChange={this.handleFirstNameChange}
-                />
-              </div>
-              <div className="col">
-                <label htmlFor="last-name">Last Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="last-name"
-                  placeholder="Enter last Name"
-                  name="lastName"
-                  value={this.state.lastName}
-                  onChange={this.handleLastNameChange}
-                />
-              </div>
-            </div>
-            <div className="mt-3">
-              <label htmlFor="category">Choose a category</label>
-              <select
-                className="form-control"
-                name="category"
-                id="category"
-                value={this.state.category}
-                onChange={this.handleCategoryChange}
-              >
-                <option value="Auto-liability-coverage">
-                  Auto liability coverage
-                </option>
-                <option value="Uninsured-and-under-insured-motorist-coverage">
-                  Uninsured and under-insured motorist coverage{" "}
-                </option>
-                <option value="Comprehensive-coverage">
-                  Comprehensive Coverage
-                </option>
-                <option value="Collision-coverage">Collision Coverage</option>
-                <option value="Medical-payments-coverage">
-                  Medical payments Coverage
-                </option>
-                <option value="Personal-injury-protection">
-                  Personal injury protection
-                </option>
-              </select>
-            </div>
-            <div className="mt-3">
-              <label htmlFor="full-address">Address</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.fullAddress}
-                onChange={this.handleFullAddress}
-              />
-            </div>
-            <div className="mt-3">
-              <label htmlFor="description">Description</label>
-              <textarea
-                className="form-control"
-                type="text"
-                name="description"
-                id="description"
-                rows="4"
-                value={this.state.description}
-                onChange={this.handleDescriptionChange}
-              />
-            </div>
+          <div className="card top">
+            <h2 className="underlined">
+              Submit your claim
+              <br />
+              <small style={{ color: "#3a5a78" }}>
+                All information is required unless it’s listed as optional.
+              </small>
+            </h2>
+            <form
+              onSubmit={this.handleSubmit}
+              method="POST"
+              className="form-selectors"
+              data-toggle="validator"
+              data-disable="false"
+              data-delay="999999"
+            >
+              <div className="row">
+                <div className="col-md-4 form-group has-feedback">
+                  <label htmlFor="policy-number" className="control-label">
+                    Policy Number
+                  </label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="policy-number"
+                    placeholder="Enter policy number"
+                    name="policyNumber"
+                    data-error="Please enter your policynumber."
+                    value={this.state.policyNumber}
+                    onChange={this.handlePolicyNumberChange}
+                    required
+                  />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
+                </div>
 
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </form>
+                <div className="col-md-4 form-group">
+                  <label htmlFor="first-name" className="control-label">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="first-name"
+                    placeholder="Enter First Name"
+                    name="firstName"
+                    value={this.state.firstName}
+                    onChange={this.handleFirstNameChange}
+                    required
+                  />
+                </div>
+                <div className="col-md-4 form-group">
+                  <label htmlFor="last-name" className="control-label">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="last-name"
+                    placeholder="Enter last Name"
+                    name="lastName"
+                    value={this.state.lastName}
+                    onChange={this.handleLastNameChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="mt-3 col-md-6 form-group has-feedback">
+                  <label htmlFor="category" className="control-label ">
+                    Choose a category
+                  </label>
+                  <select
+                    className="form-control "
+                    name="category"
+                    id="category"
+                    value={this.state.category}
+                    onChange={this.handleCategoryChange}
+                    required
+                  >
+                    <option value="Auto-liability-coverage">
+                      Auto liability coverage
+                    </option>
+                    <option value="Uninsured-and-under-insured-motorist-coverage">
+                      Uninsured and under-insured motorist coverage{" "}
+                    </option>
+                    <option value="Comprehensive-coverage">
+                      Comprehensive Coverage
+                    </option>
+                    <option value="Collision-coverage">
+                      Collision Coverage
+                    </option>
+                    <option value="Medical-payments-coverage">
+                      Medical payments Coverage
+                    </option>
+                    <option value="Personal-injury-protection">
+                      Personal injury protection
+                    </option>
+                  </select>
+                </div>
+                <div className="mt-3 col-md-6 form-group">
+                  <label htmlFor="full-address" className="control-label ">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={this.state.fullAddress}
+                    onChange={this.handleFullAddress}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="mt-3 form-group">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  className="form-control"
+                  type="text"
+                  name="description"
+                  id="description"
+                  rows="4"
+                  value={this.state.description}
+                  onChange={this.handleDescriptionChange}
+                  required
+                />
+              </div>
+
+              <button type="submit" className="btn btn-secondary">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );

@@ -151,9 +151,15 @@ class SubmitClaim extends Component {
                     placeholder="Enter First Name"
                     name="firstName"
                     value={this.state.firstName}
+                    data-error="Please enter your first name."
                     onChange={this.handleFirstNameChange}
                     required
                   />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
                 </div>
                 <div className="col-md-4 form-group">
                   <label htmlFor="last-name" className="control-label">
@@ -166,9 +172,15 @@ class SubmitClaim extends Component {
                     placeholder="Enter last Name"
                     name="lastName"
                     value={this.state.lastName}
+                    data-error="Please enter your last name."
                     onChange={this.handleLastNameChange}
                     required
                   />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
                 </div>
               </div>
 
@@ -216,6 +228,11 @@ class SubmitClaim extends Component {
                     onChange={this.handleFullAddress}
                     required
                   />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
                 </div>
               </div>
 
@@ -231,6 +248,11 @@ class SubmitClaim extends Component {
                   onChange={this.handleDescriptionChange}
                   required
                 />
+                <span
+                  className="icon icon-attention form-control-feedback"
+                  aria-hidden="true"
+                />
+                <div className="help-block with-errors" />
               </div>
 
               <button type="submit" className="btn btn-secondary ">

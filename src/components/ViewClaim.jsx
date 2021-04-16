@@ -53,10 +53,19 @@ class ViewClaim extends Component {
                 All information is required unless it’s listed as optional.
               </small>
             </h2>
-            <form onSubmit={this.handleSubmit} method="POST">
+            <form
+              onSubmit={this.handleSubmit}
+              method="POST"
+              className="form-selectors"
+              data-toggle="validator"
+              data-disable="false"
+              data-delay="999999"
+            >
               <div className="row">
                 <div className="mt-4 form-group col-md-6">
-                  <label htmlFor="first-name">First Name</label>
+                  <label htmlFor="first-name" className="control-label">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -65,8 +74,14 @@ class ViewClaim extends Component {
                     name="firstName"
                     value={this.state.firstName}
                     onChange={this.handleFirstNameChange}
+                    data-error="Please enter your first name."
                     required
                   />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
                 </div>
                 <div className="mt-4 form-group col-md-6">
                   <label htmlFor="last-name">Last Name</label>
@@ -78,8 +93,14 @@ class ViewClaim extends Component {
                     name="lastName"
                     value={this.state.lastName}
                     onChange={this.handleLastNameChange}
+                    data-error="Please enter your last name."
                     required
                   />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
                 </div>
 
                 <div className="col-md-6 form-group">
@@ -92,8 +113,14 @@ class ViewClaim extends Component {
                     name="policyNumber"
                     value={this.state.policyNumber}
                     onChange={this.handlePolicyNumberChange}
+                    data-error="Please enter your policy number"
                     required
                   />
+                  <span
+                    className="icon icon-attention form-control-feedback"
+                    aria-hidden="true"
+                  />
+                  <div className="help-block with-errors" />
                 </div>
               </div>
 

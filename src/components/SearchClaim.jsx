@@ -82,7 +82,7 @@ function SearchClaim() {
             </thead>
 
             <tbody>
-              {claims.map(claim => {
+              {claims.map(claim =>
                 <tr onClick={() => history.push(`/Claim/${claim._id}`)}>
                   <td>{claim.lastName}</td>
                   <td>{claim.firstName}</td>
@@ -90,7 +90,7 @@ function SearchClaim() {
                   <td>{claim.address}</td>
                   <td>{claim.description}</td>
                 </tr>
-              })}
+              )}
             </tbody>
           </table>
         </div>

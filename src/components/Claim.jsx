@@ -12,7 +12,7 @@ function Claim(props) {
   return <div className="container">
     <ul className="breadcrumb">
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/Claims">Claims</Link></li>
+      <li><Link to="/SearchClaim">Claims</Link></li>
       <li className="active">{props.match.params.claimID ?? '00000000-0000-0000-0000-000000000000'}</li>
     </ul>
 
@@ -53,7 +53,7 @@ function Claim(props) {
             <h2>{data.date ?? '3.27.2021'}</h2>
 
             <h6 style={{ marginTop: '40px' }}>Location</h6>
-            <h2>{props.address ?? '357 Brittany Farms Rd'}</h2>
+            <h2>{data.address ?? '357 Brittany Farms Rd'}</h2>
           </div>
 
           <div className="col-md-8">

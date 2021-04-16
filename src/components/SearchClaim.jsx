@@ -25,6 +25,7 @@ function SearchClaim() {
         <div className="mt-4">
           <label htmlFor="last_name">Enter Claimants Last Name</label>
           <input
+            name="last_name"
             type="text"
             className="form-control"
             placeholder="Search..."
@@ -35,6 +36,7 @@ function SearchClaim() {
 
           <label htmlFor="first_name">Enter Claimants First Name</label>
           <input
+            name="first_name"
             type="text"
             className="form-control"
             placeholder="Search..."
@@ -45,6 +47,7 @@ function SearchClaim() {
 
           <label htmlFor="policy_number">Enter Claimants Policy Number</label>
           <input
+            name="policy_number"
             type="text"
             className="form-control"
             placeholder="Search..."
@@ -57,8 +60,8 @@ function SearchClaim() {
             let base = "http://localhost:8080/claims"
 
             if (query.firstName !== "") base += `?firstName=${query.firstName}`
-            if (query.lastName !== "") base += `?firstName=${query.lastName}`
-            if (query.policyNumber !== "") base += `?firstName=${query.policyNumber}`
+            if (query.lastName !== "") base += `?lastName=${query.lastName}`
+            if (query.policyNumber !== "") base += `?policyNumber=${query.policyNumber}`
 
             fetch(base)
               .then(res => res.json())

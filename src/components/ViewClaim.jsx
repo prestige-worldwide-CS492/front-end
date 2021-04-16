@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 
 class ViewClaim extends Component {
   state = {};
-
+  claims = [];
   constructor(props) {
     super(props);
 
@@ -18,6 +18,7 @@ class ViewClaim extends Component {
       firstName: "",
       lastName: "",
       policyNumber: "",
+      claims: "",
     };
   }
 
@@ -44,6 +45,18 @@ class ViewClaim extends Component {
     let isValidForm = form.checkValidity();
     if (isValidForm) {
       console.log("submitted");
+      let base = "http://localhost:8080/claims";
+
+      if (this.state.firstName !== "")
+        base += `?firstName=${this.state.firstName}`;
+      if (this.state.lastName !== "")
+        base += `&lastName=${this.state.lastName}`;
+      if (this.state.policyNumber !== "")
+        base += `&policyNumber=${this.state.policyNumber}`;
+      console.log(base);
+      fetch(base)
+        .then((res) => res.json())
+        .then(console.log(res));
     }
   };
 

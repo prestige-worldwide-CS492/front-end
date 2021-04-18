@@ -39,7 +39,7 @@ class ViewClaim extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
     let form = document.getElementById("form_id");
     let isValidForm = form.checkValidity();
@@ -59,7 +59,7 @@ class ViewClaim extends Component {
         .then((res) => this.setState({ claims: res }))
         .then(console.log(this.state.claims));
     }
-  };
+  }
 
   render() {
     if (this.state.redirect === "Success") {

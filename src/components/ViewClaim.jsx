@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 
 class ViewClaim extends Component {
   state = {};
-  claims = [];
+  //claims = [];
   constructor(props) {
     super(props);
 
@@ -56,7 +56,8 @@ class ViewClaim extends Component {
       console.log(base);
       fetch(base)
         .then((res) => res.json())
-        .then(console.log(res));
+        .then((res) => this.setState({ claims: res }))
+        .then(console.log(this.state.claims));
     }
   };
 

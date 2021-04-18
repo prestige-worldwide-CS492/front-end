@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import axios from "axios";
 import { Redirect } from "react-router";
-
+import { useHistory } from "react-router";
 class ViewClaim extends Component {
   state = {};
   //claims = [];
+
   constructor(props) {
     super(props);
 
@@ -18,7 +19,7 @@ class ViewClaim extends Component {
       firstName: "",
       lastName: "",
       policyNumber: "",
-      claims: "",
+      claims: [],
     };
   }
 
@@ -56,8 +57,8 @@ class ViewClaim extends Component {
       console.log(base);
       fetch(base)
         .then((res) => res.json())
-        .then((res) => this.setState({ claims: res }))
-        .then(console.log(this.state.claims));
+        .then((data) => this.setState({ claims: data }))
+        .then(() => console.log(this.state.claims));
     }
   }
 
@@ -153,6 +154,39 @@ class ViewClaim extends Component {
               </button>
             </form>
           </div>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" className="col-xs-2">
+                  LAST NAME
+                </th>
+                <th scope="col" className="col-xs-2">
+                  FIRST NAME
+                </th>
+                <th scope="col" className="col-xs-2">
+                  POLICY NUMBER
+                </th>
+                <th scope="col" className="col-xs-2">
+                  ACCIDENT ADDRESS
+                </th>
+                <th scope="col" className="col-xs-10">
+                  ACCIDENT DESCRIPTION FROM THE CLAIMANT
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {this.state.claims.map((claim, i) => (
+                <tr key={i}>
+                  <td>{claim.lastName}</td>
+                  <td>{claim.firstName}</td>
+                  <td>{claim.policyNumber}</td>
+                  <td>{claim.address}</td>
+                  <td>{claim.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     );

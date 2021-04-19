@@ -4,50 +4,6 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { useHistory } from "react-router";
 
-function Table(props) {
-  const submitted = props.submitted;
-  const claims = props.claims;
-  if (submitted) {
-    return (
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col" className="col-xs-2">
-              LAST NAME
-            </th>
-            <th scope="col" className="col-xs-2">
-              FIRST NAME
-            </th>
-            <th scope="col" className="col-xs-2">
-              POLICY NUMBER
-            </th>
-            <th scope="col" className="col-xs-2">
-              ACCIDENT ADDRESS
-            </th>
-            <th scope="col" className="col-xs-10">
-              ACCIDENT DESCRIPTION FROM THE CLAIMANT
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {claims.map((claim, i) => (
-            <tr key={i}>
-              <td>{claim.lastName}</td>
-              <td>{claim.firstName}</td>
-              <td>{claim.policyNumber}</td>
-              <td>{claim.address}</td>
-              <td>{claim.description}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  } else {
-    return null;
-  }
-}
-
 class ViewClaim extends Component {
   state = {};
 
@@ -170,7 +126,8 @@ class ViewClaim extends Component {
                   />
                   <div className="help-block with-errors" />
                 </div>
-
+              </div>
+              <div className="row">
                 <div className="col-md-6 form-group">
                   <label htmlFor="policy-number">Policy Number</label>
                   <input
@@ -197,10 +154,41 @@ class ViewClaim extends Component {
               </button>
             </form>
           </div>
-          <Table
-            submitted={this.state.submitted}
-            claims={this.state.claims}
-          ></Table>
+          {this.state.submitted && (
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" className="col-xs-2">
+                    LAST NAME
+                  </th>
+                  <th scope="col" className="col-xs-2">
+                    FIRST NAME
+                  </th>
+                  <th scope="col" className="col-xs-2">
+                    POLICY NUMBER
+                  </th>
+                  <th scope="col" className="col-xs-2">
+                    ACCIDENT ADDRESS
+                  </th>
+                  <th scope="col" className="col-xs-10">
+                    ACCIDENT DESCRIPTION FROM THE CLAIMANT
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {this.state.claims.map((claim, i) => (
+                  <tr key={i}>
+                    <td>{claim.lastName}</td>
+                    <td>{claim.firstName}</td>
+                    <td>{claim.policyNumber}</td>
+                    <td>{claim.address}</td>
+                    <td>{claim.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     );

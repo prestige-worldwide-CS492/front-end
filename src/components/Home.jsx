@@ -24,6 +24,69 @@ export default function Home() {
         <li className="active">Home</li>
       </ul>
 
+      <div id="hig-carousel" className="carousel slide" data-ride="carousel">
+        <div className="container">
+          <ol className="carousel-indicators">
+            <li
+              data-target="#hig-carousel"
+              data-slide-to={0}
+              className="active"
+            />
+            <li data-target="#hig-carousel" data-slide-to={1} />
+            <li data-target="#hig-carousel" data-slide-to={2} />
+          </ol>
+          <div className="carousel-inner">
+            <div className="item active">
+              <div className="item-inner">
+                <section className="text-center">
+                  <h4>Why Do Business with the hartford?</h4>
+                  <div>
+                    The Hartford has been helping AARP members tailor insurance
+                    to their unique needs for more than 30 years.
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div className="item">
+              <div className="item-inner">
+                <section className="text-center">
+                  <h4>Why Do Business with the hartford?</h4>
+                  <div>
+                    The Hartford has been helping AARP members tailor insurance
+                    to their unique needs for more than 30 years.
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div className="item">
+              <div className="item-inner">
+                <section className="text-center">
+                  <h4>Why Do Business with the hartford?</h4>
+                  <div>
+                    The Hartford has been helping AARP members tailor insurance
+                    to their unique needs for more than 30 years.
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <a
+            className="left carousel-control"
+            href="#hig-carousel"
+            data-slide="prev"
+          >
+            <i className="icon icon-carousel-left" />
+          </a>
+          <a
+            className="right carousel-control"
+            href="#hig-carousel"
+            data-slide="next"
+          >
+            <i className="icon icon-carousel-right" />
+          </a>
+        </div>
+      </div>
+
       <div className="row card top">
         <div className="col-md-4">
           <div className="card-soft blue-soft">

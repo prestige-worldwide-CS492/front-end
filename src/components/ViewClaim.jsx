@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./navbar";
 import axios from "axios";
 import { Redirect } from "react-router";
-import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 class ViewClaim extends Component {
   state = {};
@@ -178,7 +178,12 @@ class ViewClaim extends Component {
 
               <tbody>
                 {this.state.claims.map((claim, i) => (
-                  <tr key={i}>
+                  <tr
+                    key={i}
+                    onClick={() =>
+                      (window.location.href = `/Claim/${claim._id}`)
+                    }
+                  >
                     <td>{claim.lastName}</td>
                     <td>{claim.firstName}</td>
                     <td>{claim.policyNumber}</td>

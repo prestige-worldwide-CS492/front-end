@@ -71,14 +71,14 @@ function SearchClaim() {
                 type="submit"
                 className="btn btn-secondary"
                 onClick={() => {
-                  let base = "http://localhost:8080/claims";
+                  let base = "http://localhost:8080/claims?";
 
                   if (query.firstName !== "")
-                    base += `?firstName=${query.firstName}`;
+                    base += `firstName=${query.firstName}&`;
                   if (query.lastName !== "")
-                    base += `?lastName=${query.lastName}`;
+                    base += `lastName=${query.lastName}&`;
                   if (query.policyNumber !== "")
-                    base += `?policyNumber=${query.policyNumber}`;
+                    base += `policyNumber=${query.policyNumber}`;
 
                   fetch(base)
                     .then((res) => res.json())

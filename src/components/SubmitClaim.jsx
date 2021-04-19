@@ -55,7 +55,7 @@ export default function SubmitClaim () {
       </ul>
 
       <div className='card row top'>
-        <form onSubmit={submitHandler} className='form-selectors' data-toggle='validator' data-disable='true' data-delay='999999'>
+        <form onSubmit={submitHandler} className='form-selectors' data-toggle='validator'>
           <div className='row'>
             <div className='col-md-4 form-group has-feedback'>
               <label htmlFor='policy_number' className='control-label'>Policy Number</label>

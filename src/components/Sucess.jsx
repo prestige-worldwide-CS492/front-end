@@ -8,7 +8,11 @@ class Success extends Component {
       <div>
         <Navbar></Navbar>
         <div className="container">
-          <h1>Success Page</h1>
+          <h1>
+            <div className="alert alert-success text-center" role="alert">
+              <strong>Success!</strong> Your claim was successfully submitted
+            </div>
+          </h1>
         </div>
       </div>
     );

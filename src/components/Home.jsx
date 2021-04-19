@@ -1,102 +1,89 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import "../HomeP.css";
+/**
+ * Copyright 2021 Presige Worldwide
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-class Home extends Component {
-  state = {};
-  render() {
-    return (
-    <div>
-        <div className="background-container-soft  ">
-        <div className="background-container-soft-content content ">
-        <div className="row my-row mx-auto">
-            <div className="col-md-2 i-col ">
-            <img src="https://ts0.hfdstatic.com/sites/higux/v3.3.44/images/logo.svg" className="img-thumbnail" alt="The Hartford" />  
-            </div>
-            <div className="col-md-10 title-col my-col ">
-            <h1>Welcome to The Hartford Home Page</h1>
-            <h3>We Make Online Claims Easy</h3>
-            <h6>Start filing your claim with one click</h6>
-            </div>
-        </div>
-        <div className="row body-row mx-auto mb-5">
-            <div className="col-md-4 card">
-            <div className="card-soft  blue-soft ">  
-                <div className="card-soft-heading">
-                <strong className="card-soft-heading-title">File A Claim</strong>
-                </div>
-                <div className="card-soft-content">    
-                <p>Fill out information regarding an auto-related insurance claim</p>
-                </div>
-            </div>
-            </div>
-            <div className="col-md-4 card">
-            <div className="card-soft  blue-soft ">  
-                <div className="card-soft-heading">
-                <strong className="card-soft-heading-title">View Claim(s)</strong>
-                </div>  
-                <div className="card-soft-content">    
-                <p>View your submitted claim(s) below to access information</p>
-                </div>
-            </div>
-            </div>
-            <div className="col-md-4 card">
-            <div className="card-soft  blue-soft ">  
-                <div className="card-soft-heading">
-                <strong className="card-soft-heading-title">Search for A Claim</strong>
-                </div>
-                <div className="card-soft-content">    
-                <p>Insurer Search For Claim</p>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div className="row mx-auto  buttonRow ">
-            <div className="col-md-4 col-sm-12 my-3 button">
-            <a href="/SubmitClaim" className = "btn btn-secondary btn-lg btn-block btn-icon-lg">
-                <i class="icon icon-edit"></i><span>Submit A Claim</span></a>
-            
-            </div>
-            <div className="col-md-4 col-sm-12 button">
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-            <a href="/ViewClaim" className = "btn btn-secondary btn-lg btn-block btn-icon-lg">
-                <i class="icon icon-read-book"></i><span>View Claim</span></a>
+export default function Home () {
+  return (
+    <div className='container'>
+      <ul className='breadcrumb'>
+        <li className='active'>Home</li>
+      </ul>
+
+      <div className='row card top'>
+        <div className='col-md-4'>
+          <div className='card-soft blue-soft'>
+            <div className='card-soft-heading'>
+              <strong className='card-soft-heading-title'>File A Claim</strong>
             </div>
-            <div className="col-md-4 col-sm-12 button">
-            <a href="/SearchClaim" className = "btn btn-secondary btn-lg btn-block my-5 btn-icon-lg">
-                <i class="icon icon-search"></i><span>Search For A Claim</span></a>
+
+            <div className='card-soft-content'>
+              <p>Fill out information regarding an auto-related insurance claim</p>
             </div>
+          </div>
         </div>
+
+        <div className='col-md-4'>
+          <div className='card-soft blue-soft'>
+            <div className='card-soft-heading'>
+              <strong className='card-soft-heading-title'>View Claim(s)</strong>
+            </div>
+
+            <div className='card-soft-content'>
+              <p>View your submitted claim(s) below to access information</p>
+            </div>
+          </div>
         </div>
-        <div className="mb-5 pt-5 test">
-        </div>               
+
+        <div className='col-md-4'>
+          <div className='card-soft blue-soft'>
+            <div className='card-soft-heading'>
+              <strong className='card-soft-heading-title'>Search for A Claim</strong>
+            </div>
+
+            <div className='card-soft-content'>
+              <p>Insurer Search For Claim</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='row card'>
+        <div className='col-md-4'>
+          <Link className='btn btn-lg btn-secondary btn-block btn-icon-lg' to='submit-claim'>
+            <i className='icon icon-edit' />
+            <span>Submit a Claim</span>
+          </Link>
+        </div>
+
+        <div className='col-md-4'>
+          <Link className='btn btn-lg btn-secondary btn-block btn-icon-lg' to='view-claim'>
+            <i className='icon icon-read-book' />
+            <span>View a Claim</span>
+          </Link>
+        </div>
+
+        <div className='col-md-4'>
+          <Link className='btn btn-lg btn-secondary btn-block btn-icon-lg' to='search-claim'>
+            <i className='icon icon-search' />
+            <span>Search for a Claim</span>
+          </Link>
+        </div>
+      </div>
     </div>
-    <footer className="footer footer-thin">
-        <div className="container">
-        <div className="row content-row">
-            <div className="col-md-8 col-md-offset-2">
-            <ul className="links list-inline">
-                <li><a href="https://www.thehartford.com/contact-the-hartford">Contact Us</a></li>
-                <li><a href="https://www.thehartford.com/online-privacy-policy">Privacy Policy</a></li>
-                <li><a href="https://www.thehartford.com/legal-notice">Legal Notice</a></li>
-                <li><a href="https://www.thehartford.com/accessibility-statement">Accessibility Statement</a></li>
-            </ul>
-            <p className="copyright">©  The Hartford</p>
-            </div>
-            <div className="col-md-2">
-            <img src="images/norton.svg" alt="Norton Secured - Powered by VeriSign" className="norton" />
-            </div>
-        </div>
-        </div>
-    </footer>
-</div>
-        
-
-  
-
-      
-    );
-  }
+  )
 }
-
-export default Home;

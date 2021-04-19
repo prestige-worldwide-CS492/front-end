@@ -1,269 +1,155 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import "../formLayout.css";
-import { Redirect } from "react-router";
+/**
+ * Copyright 2021 Presige Worldwide
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-class SubmitClaim extends Component {
-  state = {};
+import React, { useRef } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
-  constructor(props) {
-    super(props);
+export default function SubmitClaim () {
+  const policyNumber = useRef(null)
+  const firstName = useRef(null)
+  const lastName = useRef(null)
+  const category = useRef(null)
+  const description = useRef(null)
+  const address = useRef(null)
 
-    this.handlePolicyNumberChange = this.handlePolicyNumberChange.bind(this);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleFullAddress = this.handleFullAddress.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      policyNumber: "",
-      firstName: "",
-      lastName: "",
-      category: "",
-      description: "",
-      redirect: "",
-      fullAddress: "",
-    };
-  }
+  const history = useHistory()
 
-  handleSubmit(event) {
-    event.preventDefault();
-    //if valid then:
-    console.log("form submitted!");
+  const submitHandler = event => {
+    event.preventDefault()
 
-    const newClaim = {
-      policy_number: this.state.policyNumber,
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      category: this.state.category,
-      description: this.state.description,
-      address: this.state.fullAddress,
-    };
-    console.log(newClaim);
-
-    fetch("http://localhost:8080/claims", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newClaim),
-    }).then((x) => x.status === 200 && this.setState({ redirect: "Success" }));
-
-    this.setState({
-      policyNumber: "",
-      firstName: "",
-      lastName: "",
-      category: "",
-      description: "",
-    });
-  }
-
-  handlePolicyNumberChange = (event) => {
-    this.setState({
-      policyNumber: event.target.value,
-    });
-  };
-
-  handleFirstNameChange = (event) => {
-    this.setState({
-      firstName: event.target.value,
-    });
-  };
-
-  handleLastNameChange = (event) => {
-    this.setState({
-      lastName: event.target.value,
-    });
-  };
-
-  handleCategoryChange = (event) => {
-    this.setState({
-      category: event.target.value,
-    });
-  };
-
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value,
-    });
-  };
-
-  handleFullAddress = (event) => {
-    this.setState({
-      fullAddress: event.target.value,
-    });
-  };
-
-  render() {
-    if (this.state.redirect === "Success") {
-      return <Redirect to="/Success" />;
+    const claim = {
+      policy_number: policyNumber.current.value,
+      first_name: firstName.current.value,
+      last_name: lastName.current.value,
+      category: category.current.value,
+      description: description.current.value,
+      address: address.current.value
     }
-    return (
-      <div>
-        <Navbar></Navbar>
-        <div className="container p-3">
-          <div className="card top">
-            <h2 className="underlined">
-              Submit your claim
-              <br />
-              <small style={{ color: "#3a5a78" }}>
-                All information is required unless it’s listed as optional.
-              </small>
-            </h2>
 
-            <form
-              onSubmit={this.handleSubmit}
-              method="POST"
-              className="form-selectors"
-              data-toggle="validator"
-              data-disable="false"
-              data-delay="999999"
-            >
-              <div className="row">
-                <div className="col-md-4 form-group has-feedback">
-                  <label htmlFor="policy-number" className="control-label">
-                    Policy Number
-                  </label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="policy-number"
-                    placeholder="Enter policy number"
-                    name="policyNumber"
-                    data-error="Please enter your policynumber."
-                    value={this.state.policyNumber}
-                    onChange={this.handlePolicyNumberChange}
-                    required
-                  />
-                  <span
-                    className="icon icon-attention form-control-feedback"
-                    aria-hidden="true"
-                  />
-                  <div className="help-block with-errors" />
-                </div>
-
-                <div className="col-md-4 form-group">
-                  <label htmlFor="first-name" className="control-label">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="first-name"
-                    placeholder="Enter First Name"
-                    name="firstName"
-                    value={this.state.firstName}
-                    data-error="Please enter your first name."
-                    onChange={this.handleFirstNameChange}
-                    required
-                  />
-                  <span
-                    className="icon icon-attention form-control-feedback"
-                    aria-hidden="true"
-                  />
-                  <div className="help-block with-errors" />
-                </div>
-                <div className="col-md-4 form-group">
-                  <label htmlFor="last-name" className="control-label">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="last-name"
-                    placeholder="Enter last Name"
-                    name="lastName"
-                    value={this.state.lastName}
-                    data-error="Please enter your last name."
-                    onChange={this.handleLastNameChange}
-                    required
-                  />
-                  <span
-                    className="icon icon-attention form-control-feedback"
-                    aria-hidden="true"
-                  />
-                  <div className="help-block with-errors" />
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="mt-3 col-md-6 form-group has-feedback">
-                  <label htmlFor="category" className="control-label ">
-                    Choose a category
-                  </label>
-                  <select
-                    className="form-control "
-                    name="category"
-                    id="category"
-                    value={this.state.category}
-                    onChange={this.handleCategoryChange}
-                    required
-                  >
-                    <option value="Auto-liability-coverage">
-                      Auto liability coverage
-                    </option>
-                    <option value="Uninsured-and-under-insured-motorist-coverage">
-                      Uninsured and under-insured motorist coverage{" "}
-                    </option>
-                    <option value="Comprehensive-coverage">
-                      Comprehensive Coverage
-                    </option>
-                    <option value="Collision-coverage">
-                      Collision Coverage
-                    </option>
-                    <option value="Medical-payments-coverage">
-                      Medical payments Coverage
-                    </option>
-                    <option value="Personal-injury-protection">
-                      Personal injury protection
-                    </option>
-                  </select>
-                </div>
-                <div className="mt-3 col-md-6 form-group">
-                  <label htmlFor="full-address" className="control-label ">
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={this.state.fullAddress}
-                    onChange={this.handleFullAddress}
-                    required
-                  />
-                  <span
-                    className="icon icon-attention form-control-feedback"
-                    aria-hidden="true"
-                  />
-                  <div className="help-block with-errors" />
-                </div>
-              </div>
-
-              <div className="mt-3 form-group">
-                <label htmlFor="description">Description</label>
-                <textarea
-                  className="form-control"
-                  type="text"
-                  name="description"
-                  id="description"
-                  rows="4"
-                  value={this.state.description}
-                  onChange={this.handleDescriptionChange}
-                  required
-                />
-                <span
-                  className="icon icon-attention form-control-feedback"
-                  aria-hidden="true"
-                />
-                <div className="help-block with-errors" />
-              </div>
-
-              <button type="submit" className="btn btn-secondary ">
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    );
+    fetch('http://localhost:8080/claims', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(claim)
+    })
+      .then(() => history.replace('/success'))
   }
-}
 
-export default SubmitClaim;
+  return (
+    <div className='container'>
+      <ul className='breadcrumb'>
+        <li><Link to='/'>Home</Link></li>
+        <li className='active'>Submit Claim</li>
+      </ul>
+
+      <div className='card row top'>
+        <form onSubmit={submitHandler} className='form-selectors' data-toggle='validator' data-disable='true' data-delay='999999'>
+          <div className='row'>
+            <div className='col-md-4 form-group has-feedback'>
+              <label htmlFor='policy_number' className='control-label'>Policy Number</label>
+              <input
+                type='number'
+                className='form-control'
+                id='policy_number'
+                placeholder='Enter policy number'
+                name='policy_number'
+                data-error='Please enter your policynumber.'
+                ref={policyNumber}
+                required
+              />
+              <span className='icon icon-attention form-control-feedback' aria-hidden='true' />
+              <div className='help-block with-errors' />
+            </div>
+
+            <div className='col-md-4 form-group has-feedback'>
+              <label htmlFor='first-name' className='control-label'>First Name</label>
+              <input
+                type='text'
+                className='form-control'
+                id='first_name'
+                placeholder='Enter First Name'
+                name='first_name'
+                data-error='Please enter your first name.'
+                ref={firstName}
+                required
+              />
+              <span className='icon icon-attention form-control-feedback' aria-hidden='true' />
+              <div className='help-block with-errors' />
+            </div>
+
+            <div className='col-md-4 form-group has-feedback'>
+              <label htmlFor='last_name' className='control-label'>Last Name</label>
+              <input
+                type='text'
+                className='form-control'
+                id='last_name'
+                placeholder='Enter last Name'
+                name='last_name'
+                data-error='Please enter your last name.'
+                ref={lastName}
+                required
+              />
+              <span className='icon icon-attention form-control-feedback' aria-hidden='true' />
+              <div className='help-block with-errors' />
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='mt-3 col-md-6 form-group has-feedback'>
+              <label htmlFor='category' className='control-label'>Choose a category</label>
+              <select className='form-control' name='category' id='category' ref={category} required>
+                <option value='Auto liability coverage'>Auto Liability Coverage</option>
+                <option value='Uninsured Motorist Coverage'>Uninsured Motorist Coverage</option>
+                <option value='Comprehensive Coverage'>Comprehensive Coverage</option>
+                <option value='Collision Coverage'>Collision Coverage</option>
+                <option value='Medical Payments Coverage'>Medical payments Coverage</option>
+                <option value='Personal Injury Protection'>Personal Injury Protection</option>
+              </select>
+            </div>
+
+            <div className='mt-3 col-md-6 form-group has-feedback'>
+              <label htmlFor='full-address' className='control-label'>Address</label>
+              <input
+                type='text'
+                className='form-control'
+                ref={address}
+                required
+              />
+              <span className='icon icon-attention form-control-feedback' aria-hidden='true' />
+              <div className='help-block with-errors' />
+            </div>
+          </div>
+
+          <div className='mt-3 form-group'>
+            <label htmlFor='description'>Description</label>
+            <textarea
+              className='form-control'
+              type='text'
+              name='description'
+              id='description'
+              rows='4'
+              ref={description}
+              required
+            />
+            <span className='icon icon-attention form-control-feedback' aria-hidden='true' />
+            <div className='help-block with-errors' />
+          </div>
+
+          <input type='submit' value='Submit' className='btn btn-secondary' />
+        </form>
+      </div>
+    </div>
+  )
+}

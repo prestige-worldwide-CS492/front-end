@@ -1,70 +1,86 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+/**
+ * Copyright 2021 Presige Worldwide
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function Claim(props) {
-  const [data, setData] = useState({})
+export default function Claim ({ match }) {
+  const [claim, setClaim] = useState({})
 
-  fetch(`http://localhost:8080/claims/${props.match.params.claimID}`)
-    .then(res => res.json())
-    .then(res => setData(res))
+  useEffect(() => {
+    fetch(`http://localhost:8080/claims/${match.params.claimID}`)
+      .then(res => res.json())
+      .then(res => setClaim(res))
+  }, [match.params.claimID])
 
-  return <div className="container">
-    <ul className="breadcrumb">
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/SearchClaim">Claims</Link></li>
-      <li className="active">{props.match.params.claimID ?? '00000000-0000-0000-0000-000000000000'}</li>
-    </ul>
+  return (
+    <div className='container'>
+      <ul className='breadcrumb'>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/search-claim'>Claims</Link></li>
+        <li className='active'>{match.params.claimID.toUpperCase()}</li>
+      </ul>
 
-    <div className="card row top">
-      <h3>CLAIM {props.match.params.claimID ?? '00000000-0000-0000-0000-000000000000'}</h3>
-      <h6 className="green">Submitted on {data.date ?? '3.28.2021'}</h6>
-    </div>
+      <div className='card row top'>
+        <h3>CLAIM {match.params.claimID.toUpperCase()}</h3>
+        <h6 className='green'>Submitted on {claim.date ?? 'Loading...'}</h6>
+      </div>
 
-    <div className="card row">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-4">
-            <h6>Insurance Holder</h6>
-            <h2 style={{ marginBottom: '8px' }}>{`${data.firstName ?? 'Joe'} ${data.lastName ?? 'Smith'}`}</h2>
-            <h5>{data.policyNumber ?? '0-000-000-0000'}</h5>
+      <div className='card row'>
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-md-4'>
+              <h6>Insurance Holder</h6>
+              <h2>{claim.lastName ? `${claim.firstName} ${claim.lastName}` : 'Loading...'}</h2>
+              <h5>{claim.policyNumber ?? 'Loading...'}</h5>
+            </div>
+
+            <div className='col-md-4'>
+              <h6>Category of Claim</h6>
+              <h2>{claim.category ?? 'Loading...'}</h2>
+            </div>
+
+            <div className='col-md-4'>
+              <h6>Status</h6>
+              <h2 className='green'>{claim.status ?? 'Loading...'}</h2>
+            </div>
           </div>
-          
-          <div className="col-md-4">
-            <h6>Category of Claim</h6>
-            <h2>{data.category ?? 'vehicle collision'}</h2>
-          </div>
-          
-          <div className="col-md-4">
-            <h6>Status</h6>
-            <h2 className="green">{props.status ?? 'Resolved'}</h2>
+        </div>
+      </div>
+
+      <div className='card row'>
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-md-4'>
+              <img className='img-responsive' alt='map' src={`http://localhost:8080/claims/map/${match.params.claimID}`} />
+
+              <h6>Location</h6>
+              <h2>{claim.address ?? 'Loading...'}</h2>
+
+              <h6>Date</h6>
+              <h2>{claim.date ?? 'Loading...'}</h2>
+            </div>
+
+            <div className='col-md-8'>
+              <h2>Description</h2>
+              <p>{claim.description ?? 'Loading...'}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div className="card row">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-4">
-            <img className="img-responsive" src={`http://localhost:8080/claims/map/${props.match.params.claimID}`} />
-
-            <h6 style={{ marginTop: '40px' }}>Date</h6>
-            <h2>{data.date ?? '3.27.2021'}</h2>
-
-            <h6 style={{ marginTop: '40px' }}>Location</h6>
-            <h2>{data.address ?? '357 Brittany Farms Rd'}</h2>
-          </div>
-
-          <div className="col-md-8">
-            <h2>Description</h2>
-            <p>{data.description ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus varius vehicula nisi ac ultrices. Integer non bibendum est. Proin ut risus interdum, commodo ex nec, mollis metus. Maecenas cursus neque eu justo luctus, mollis consequat nulla eleifend. Vivamus posuere consequat sem sit amet bibendum. Donec accumsan facilisis urna nec congue. Donec interdum consequat suscipit. Proin purus risus, convallis at hendrerit vel, pharetra in quam. Mauris rhoncus laoreet imperdiet. Morbi volutpat elit aliquet tempus pharetra. Morbi maximus, leo eu gravida consequat, eros nisl feugiat lorem, sit amet scelerisque metus ipsum at quam.'}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  )
 }
-
-
-export default Claim;

@@ -14,66 +14,110 @@
  * limitations under the License.
  */
 
-import React, { useRef, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
-export default function SearchClaim () {
-  const lastName = useRef(null)
-  const firstName = useRef(null)
-  const policyNumber = useRef(null)
+export default function SearchClaim() {
+  const lastName = useRef(null);
+  const firstName = useRef(null);
+  const policyNumber = useRef(null);
 
-  const [claims, setClaims] = useState([])
+  const [claims, setClaims] = useState([]);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const searchHandler = () => {
-    const searchParams = new URLSearchParams()
+    const searchParams = new URLSearchParams();
 
-    if (lastName.current.value !== '') searchParams.set('lastName', lastName.current.value)
-    if (firstName.current.value !== '') searchParams.set('firstName', firstName.current.value)
-    if (policyNumber.current.value !== '') searchParams.set('policyNumber', policyNumber.current.value)
+    if (lastName.current.value !== "")
+      searchParams.set("lastName", lastName.current.value);
+    if (firstName.current.value !== "")
+      searchParams.set("firstName", firstName.current.value);
+    if (policyNumber.current.value !== "")
+      searchParams.set("policyNumber", policyNumber.current.value);
 
     fetch(`http://localhost:8080/claims?${searchParams.toString()}`)
-      .then(res => res.json())
-      .then(res => setClaims(res))
-  }
+      .then((res) => res.json())
+      .then((res) => setClaims(res));
+  };
 
   return (
-    <div className='container'>
-      <ul className='breadcrumb'>
-        <li><Link to='/'>Home</Link></li>
-        <li className='active'>Search</li>
+    <div className="container">
+      <ul className="breadcrumb">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li className="active">Search</li>
       </ul>
 
-      <div className='card row top'>
-        <div className='form-group'>
-          <label htmlFor='last_name' className='label-align'>Last Name</label>
-          <input name='last_name' type='text' className='form-control' placeholder='Enter Last Name' ref={lastName} />
+      <div className="card row top">
+        <div className="form-group">
+          <label htmlFor="last_name" className="label-align">
+            Last Name
+          </label>
+          <input
+            name="last_name"
+            type="text"
+            className="form-control"
+            placeholder="Enter Last Name"
+            ref={lastName}
+          />
         </div>
 
-        <div className='form-group'>
-          <label htmlFor='first_name' className='label-align'>First Name</label>
-          <input name='first_name' type='text' className='form-control' placeholder='Enter First Name' ref={firstName} />
+        <div className="form-group">
+          <label htmlFor="first_name" className="label-align">
+            First Name
+          </label>
+          <input
+            name="first_name"
+            type="text"
+            className="form-control"
+            placeholder="Enter First Name"
+            ref={firstName}
+          />
         </div>
 
-        <div className='form-group'>
-          <label htmlFor='policy_number' className='label-align'>Policy Number</label>
-          <input name='policy_number' type='text' className='form-control' placeholder='Enter Policy Number' ref={policyNumber} />
+        <div className="form-group">
+          <label htmlFor="policy_number" className="label-align">
+            Policy Number
+          </label>
+          <input
+            name="policy_number"
+            type="text"
+            className="form-control"
+            placeholder="Enter Policy Number"
+            ref={policyNumber}
+          />
         </div>
 
-        <input type='button' value='Search' className='btn btn-secondary' onClick={searchHandler} />
+        <input
+          type="button"
+          value="Search"
+          className="btn btn-secondary"
+          onClick={searchHandler}
+        />
       </div>
 
-      {claims.length > 0 &&
-        <div className='card row'>
-          <table className='table table-striped'>
+      {claims.length > 0 && (
+        <div className="card row">
+          <table className="table table-striped">
             <thead>
               <tr>
-                <th scope='col' className='col-xs-2'>Last Name</th>
-                <th scope='col' className='col-xs-2'>First Name</th>
-                <th scope='col' className='col-xs-2'>Policy Number</th>
-                <th scope='col' className='col-xs-2'>Address</th>
-                <th scope='col' className='col-xs-10'>Description</th>
+                <th scope="col" className="col-xs-2">
+                  Last Name
+                </th>
+                <th scope="col" className="col-xs-2">
+                  First Name
+                </th>
+                <th scope="col" className="col-xs-2">
+                  Policy Number
+                </th>
+                <th scope="col" className="col-xs-2">
+                  Address
+                </th>
+                <th scope="col" className="col-xs-10">
+                  Description
+                </th>
               </tr>
             </thead>
 
@@ -89,7 +133,8 @@ export default function SearchClaim () {
               ))}
             </tbody>
           </table>
-        </div>}
+        </div>
+      )}
     </div>
-  )
+  );
 }

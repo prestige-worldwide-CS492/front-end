@@ -28,23 +28,23 @@ export default function SubmitClaim () {
   const history = useHistory()
 
   const submitHandler = event => {
-    event.preventDefault()
+    if (!event.isDefaultPrevented()) {
+      const claim = {
+        policy_number: policyNumber.current.value,
+        first_name: firstName.current.value,
+        last_name: lastName.current.value,
+        category: category.current.value,
+        description: description.current.value,
+        address: address.current.value
+      }
 
-    const claim = {
-      policy_number: policyNumber.current.value,
-      first_name: firstName.current.value,
-      last_name: lastName.current.value,
-      category: category.current.value,
-      description: description.current.value,
-      address: address.current.value
+      fetch('http://localhost:8080/claims', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(claim)
+      })
+        .then(() => history.replace('/success'))
     }
-
-    fetch('http://localhost:8080/claims', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(claim)
-    })
-      .then(() => history.replace('/success'))
   }
 
   return (

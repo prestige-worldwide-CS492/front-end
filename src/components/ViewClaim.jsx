@@ -27,16 +27,17 @@ export default function ViewClaim () {
   const history = useHistory()
 
   const searchHandler = event => {
-    event.preventDefault()
-    const searchParams = new URLSearchParams()
+    if (!event.isDefaultPrevented()) {
+      const searchParams = new URLSearchParams()
 
-    if (lastName.current.value !== '') searchParams.set('lastName', lastName.current.value)
-    if (firstName.current.value !== '') searchParams.set('firstName', firstName.current.value)
-    if (policyNumber.current.value !== '') searchParams.set('policyNumber', policyNumber.current.value)
+      if (lastName.current.value !== '') searchParams.set('lastName', lastName.current.value)
+      if (firstName.current.value !== '') searchParams.set('firstName', firstName.current.value)
+      if (policyNumber.current.value !== '') searchParams.set('policyNumber', policyNumber.current.value)
 
-    fetch(`http://localhost:8080/claims?${searchParams.toString()}`)
-      .then(res => res.json())
-      .then(res => setClaims(res))
+      fetch(`http://localhost:8080/claims?${searchParams.toString()}`)
+        .then(res => res.json())
+        .then(res => setClaims(res))
+    }
   }
 
   return (
@@ -100,7 +101,7 @@ export default function ViewClaim () {
             </div>
           </div>
 
-          <input type='submit' value='View' className='btn btn-secondary' onClick={searchHandler} />
+          <input type='submit' value='View' className='btn btn-secondary' />
         </form>
       </div>
 

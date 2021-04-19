@@ -3,9 +3,53 @@ import Navbar from "./navbar";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { useHistory } from "react-router";
+
+function Table(props) {
+  const submitted = props.submitted;
+  const claims = props.claims;
+  if (submitted) {
+    return (
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" className="col-xs-2">
+              LAST NAME
+            </th>
+            <th scope="col" className="col-xs-2">
+              FIRST NAME
+            </th>
+            <th scope="col" className="col-xs-2">
+              POLICY NUMBER
+            </th>
+            <th scope="col" className="col-xs-2">
+              ACCIDENT ADDRESS
+            </th>
+            <th scope="col" className="col-xs-10">
+              ACCIDENT DESCRIPTION FROM THE CLAIMANT
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {claims.map((claim, i) => (
+            <tr key={i}>
+              <td>{claim.lastName}</td>
+              <td>{claim.firstName}</td>
+              <td>{claim.policyNumber}</td>
+              <td>{claim.address}</td>
+              <td>{claim.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+  } else {
+    return null;
+  }
+}
+
 class ViewClaim extends Component {
   state = {};
-  //claims = [];
 
   constructor(props) {
     super(props);
@@ -20,6 +64,7 @@ class ViewClaim extends Component {
       lastName: "",
       policyNumber: "",
       claims: [],
+      submitted: false,
     };
   }
 
@@ -46,6 +91,7 @@ class ViewClaim extends Component {
     let isValidForm = form.checkValidity();
     if (isValidForm) {
       console.log("submitted");
+      this.setState({ submitted: true });
       let base = "http://localhost:8080/claims";
 
       if (this.state.firstName !== "")
@@ -63,9 +109,6 @@ class ViewClaim extends Component {
   }
 
   render() {
-    if (this.state.redirect === "Success") {
-      return <Redirect to="/Success" />;
-    }
     return (
       <div>
         <Navbar></Navbar>
@@ -154,39 +197,10 @@ class ViewClaim extends Component {
               </button>
             </form>
           </div>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col" className="col-xs-2">
-                  LAST NAME
-                </th>
-                <th scope="col" className="col-xs-2">
-                  FIRST NAME
-                </th>
-                <th scope="col" className="col-xs-2">
-                  POLICY NUMBER
-                </th>
-                <th scope="col" className="col-xs-2">
-                  ACCIDENT ADDRESS
-                </th>
-                <th scope="col" className="col-xs-10">
-                  ACCIDENT DESCRIPTION FROM THE CLAIMANT
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {this.state.claims.map((claim, i) => (
-                <tr key={i}>
-                  <td>{claim.lastName}</td>
-                  <td>{claim.firstName}</td>
-                  <td>{claim.policyNumber}</td>
-                  <td>{claim.address}</td>
-                  <td>{claim.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Table
+            submitted={this.state.submitted}
+            claims={this.state.claims}
+          ></Table>
         </div>
       </div>
     );

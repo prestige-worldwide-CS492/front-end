@@ -48,7 +48,7 @@ export default function ViewClaim () {
       </ul>
 
       <div className='card row top'>
-        <form onSubmit={searchHandler} className='form-selectors' data-toggle='validator' data-disable='true' data-delay='999999'>
+        <form onSubmit={searchHandler} className='form-selectors' data-toggle='validator'>
           <div className='row'>
             <div className='mt-4 form-group col-md-6'>
               <label htmlFor='first_name' className='control-label'>First Name</label>

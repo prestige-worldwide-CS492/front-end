@@ -30,7 +30,7 @@ export default function Claim ({ match }) {
     <div className='container'>
       <ul className='breadcrumb'>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/search-claim'>Claims</Link></li>
+        <li><Link to='/search-claim'>Search</Link></li>
         <li className='active'>{match.params.claimID.toUpperCase()}</li>
       </ul>
 

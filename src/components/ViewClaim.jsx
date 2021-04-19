@@ -119,7 +119,7 @@ export default function ViewClaim () {
 
             <tbody>
               {claims.map((claim, i) => (
-                <tr key={i} onClick={() => history.push(`/Claim/${claim._id}`)}>
+                <tr key={i} onClick={() => history.push(`/claim/${claim._id}`)}>
                   <td>{claim.lastName}</td>
                   <td>{claim.firstName}</td>
                   <td>{claim.policyNumber}</td>

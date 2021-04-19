@@ -19,7 +19,7 @@ class SubmitClaim extends Component {
       policyNumber: "",
       firstName: "",
       lastName: "",
-      category: "",
+      category: "Auto-liability-coverage",
       description: "",
       redirect: "",
       fullAddress: "",

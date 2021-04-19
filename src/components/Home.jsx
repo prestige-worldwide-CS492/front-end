@@ -14,76 +14,89 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Home () {
+export default function Home() {
   return (
-    <div className='container'>
-      <ul className='breadcrumb'>
-        <li className='active'>Home</li>
+    <div className="container">
+      <ul className="breadcrumb">
+        <li className="active">Home</li>
       </ul>
 
-      <div className='row card top'>
-        <div className='col-md-4'>
-          <div className='card-soft blue-soft'>
-            <div className='card-soft-heading'>
-              <strong className='card-soft-heading-title'>File A Claim</strong>
+      <div className="row card top">
+        <div className="col-md-4">
+          <div className="card-soft blue-soft">
+            <div className="card-soft-heading">
+              <strong className="card-soft-heading-title">File A Claim</strong>
             </div>
 
-            <div className='card-soft-content'>
-              <p>Fill out information regarding an auto-related insurance claim</p>
+            <div className="card-soft-content">
+              <p>
+                Fill out information regarding an auto-related insurance claim
+              </p>
             </div>
           </div>
         </div>
 
-        <div className='col-md-4'>
-          <div className='card-soft blue-soft'>
-            <div className='card-soft-heading'>
-              <strong className='card-soft-heading-title'>View Claim(s)</strong>
+        <div className="col-md-4">
+          <div className="card-soft blue-soft">
+            <div className="card-soft-heading">
+              <strong className="card-soft-heading-title">View Claim(s)</strong>
             </div>
 
-            <div className='card-soft-content'>
+            <div className="card-soft-content">
               <p>View your submitted claim(s) below to access information</p>
             </div>
           </div>
         </div>
 
-        <div className='col-md-4'>
-          <div className='card-soft blue-soft'>
-            <div className='card-soft-heading'>
-              <strong className='card-soft-heading-title'>Search for A Claim</strong>
+        <div className="col-md-4">
+          <div className="card-soft blue-soft">
+            <div className="card-soft-heading">
+              <strong className="card-soft-heading-title">
+                Search for A Claim
+              </strong>
             </div>
 
-            <div className='card-soft-content'>
+            <div className="card-soft-content">
               <p>Insurer Search For Claim</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className='row card'>
-        <div className='col-md-4'>
-          <Link className='btn btn-lg btn-secondary btn-block btn-icon-lg' to='submit-claim'>
-            <i className='icon icon-edit' />
+      <div className="row card">
+        <div className="col-md-4">
+          <a
+            className="btn btn-lg btn-secondary btn-block btn-icon-lg"
+            href="/submit-claim"
+          >
+            <i className="icon icon-edit" />
             <span>Submit a Claim</span>
-          </Link>
+          </a>
         </div>
 
-        <div className='col-md-4'>
-          <Link className='btn btn-lg btn-secondary btn-block btn-icon-lg' to='view-claim'>
-            <i className='icon icon-read-book' />
+        <div className="col-md-4">
+          <a
+            className="btn btn-lg btn-secondary btn-block btn-icon-lg"
+            href="/view-claim"
+          >
+            <i className="icon icon-read-book" />
             <span>View a Claim</span>
-          </Link>
+          </a>
         </div>
 
-        <div className='col-md-4'>
-          <Link className='btn btn-lg btn-secondary btn-block btn-icon-lg' to='search-claim'>
-            <i className='icon icon-search' />
+        <div className="col-md-4">
+          <a
+            className="btn btn-lg btn-secondary btn-block btn-icon-lg"
+            href="search-claim"
+          >
+            <i className="icon icon-search" />
             <span>Search for a Claim</span>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
-  )
+  );
 }

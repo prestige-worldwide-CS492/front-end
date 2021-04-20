@@ -1,102 +1,161 @@
-import React, { Component } from "react";
-import Navbar from "./navbar";
-import "../HomeP.css";
+/**
+ * Copyright 2021 Presige Worldwide
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-class Home extends Component {
-  state = {};
-  render() {
-    return (
-    <div>
-        <div className="background-container-soft  ">
-        <div className="background-container-soft-content content ">
-        <div className="row my-row mx-auto">
-            <div className="col-md-2 i-col ">
-            <img src="https://ts0.hfdstatic.com/sites/higux/v3.3.44/images/logo.svg" className="img-thumbnail" alt="The Hartford" />  
-            </div>
-            <div className="col-md-10 title-col my-col ">
-            <h1>Welcome to The Hartford Home Page</h1>
-            <h3>We Make Online Claims Easy</h3>
-            <h6>Start filing your claim with one click</h6>
-            </div>
-        </div>
-        <div className="row body-row mx-auto mb-5">
-            <div className="col-md-4 card">
-            <div className="card-soft  blue-soft ">  
-                <div className="card-soft-heading">
-                <strong className="card-soft-heading-title">File A Claim</strong>
-                </div>
-                <div className="card-soft-content">    
-                <p>Fill out information regarding an auto-related insurance claim</p>
-                </div>
-            </div>
-            </div>
-            <div className="col-md-4 card">
-            <div className="card-soft  blue-soft ">  
-                <div className="card-soft-heading">
-                <strong className="card-soft-heading-title">View Claim(s)</strong>
-                </div>  
-                <div className="card-soft-content">    
-                <p>View your submitted claim(s) below to access information</p>
-                </div>
-            </div>
-            </div>
-            <div className="col-md-4 card">
-            <div className="card-soft  blue-soft ">  
-                <div className="card-soft-heading">
-                <strong className="card-soft-heading-title">Search for A Claim</strong>
-                </div>
-                <div className="card-soft-content">    
-                <p>Insurer Search For Claim</p>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div className="row mx-auto  buttonRow ">
-            <div className="col-md-4 col-sm-12 my-3 button">
-            <a href="/SubmitClaim" className = "btn btn-secondary btn-lg btn-block btn-icon-lg">
-                <i class="icon icon-edit"></i><span>Submit A Claim</span></a>
-            
-            </div>
-            <div className="col-md-4 col-sm-12 button">
+import React from "react";
+//import { Link } from "react-router-dom";
 
-            <a href="/ViewClaim" className = "btn btn-secondary btn-lg btn-block btn-icon-lg">
-                <i class="icon icon-read-book"></i><span>View Claim</span></a>
-            </div>
-            <div className="col-md-4 col-sm-12 button">
-            <a href="/SearchClaim" className = "btn btn-secondary btn-lg btn-block my-5 btn-icon-lg">
-                <i class="icon icon-search"></i><span>Search For A Claim</span></a>
-            </div>
-        </div>
-        </div>
-        <div className="mb-5 pt-5 test">
-        </div>               
-    </div>
-    <footer className="footer footer-thin">
+export default function Home() {
+  return (
+    <div className="container">
+      <ul className="breadcrumb">
+        <li className="active">Home</li>
+      </ul>
+
+      <div id="hig-carousel" className="carousel slide" data-ride="carousel">
         <div className="container">
-        <div className="row content-row">
-            <div className="col-md-8 col-md-offset-2">
-            <ul className="links list-inline">
-                <li><a href="https://www.thehartford.com/contact-the-hartford">Contact Us</a></li>
-                <li><a href="https://www.thehartford.com/online-privacy-policy">Privacy Policy</a></li>
-                <li><a href="https://www.thehartford.com/legal-notice">Legal Notice</a></li>
-                <li><a href="https://www.thehartford.com/accessibility-statement">Accessibility Statement</a></li>
-            </ul>
-            <p className="copyright">©  The Hartford</p>
+          <ol className="carousel-indicators">
+            <li
+              data-target="#hig-carousel"
+              data-slide-to={0}
+              className="active"
+            />
+            <li data-target="#hig-carousel" data-slide-to={1} />
+            <li data-target="#hig-carousel" data-slide-to={2} />
+          </ol>
+          <div className="carousel-inner">
+            <div className="item active">
+              <div className="item-inner">
+                <section className="text-center">
+                  <h4>Why Do Business with the hartford?</h4>
+                  <div>
+                    The Hartford has been helping AARP members tailor insurance
+                    to their unique needs for more than 30 years.
+                  </div>
+                </section>
+              </div>
             </div>
-            <div className="col-md-2">
-            <img src="images/norton.svg" alt="Norton Secured - Powered by VeriSign" className="norton" />
+            <div className="item">
+              <div className="item-inner">
+                <section className="text-center">
+                  <h4>Why Do Business with the hartford?</h4>
+                  <div>
+                    The Hartford has been helping AARP members tailor insurance
+                    to their unique needs for more than 30 years.
+                  </div>
+                </section>
+              </div>
             </div>
+            <div className="item">
+              <div className="item-inner">
+                <section className="text-center">
+                  <h4>Why Do Business with the hartford?</h4>
+                  <div>
+                    The Hartford has been helping AARP members tailor insurance
+                    to their unique needs for more than 30 years.
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <a
+            className="left carousel-control"
+            href="#hig-carousel"
+            data-slide="prev"
+          >
+            <i className="icon icon-carousel-left" />
+          </a>
+          <a
+            className="right carousel-control"
+            href="#hig-carousel"
+            data-slide="next"
+          >
+            <i className="icon icon-carousel-right" />
+          </a>
         </div>
+      </div>
+
+      <div style={{ marginTop: "3rem" }} className="card top ">
+        <div className="row body-row mx-auto">
+          <div className="col-md-4 ">
+            <div className="card-soft  blue-soft ">
+              <div className="card-soft-heading">
+                <strong className="card-soft-heading-title">
+                  File A Claim
+                </strong>
+              </div>
+              <div className="card-soft-content">
+                <p>
+                  Fill out information regarding an auto-related insurance claim
+                </p>
+              </div>
+            </div>
+            <div style={{ marginTop: "1rem" }} className=" button">
+              <a
+                href="/submit-claim"
+                className="btn btn-secondary btn-lg btn-block btn-icon-lg"
+              >
+                <i class="icon icon-edit"></i>
+                <span>Submit A Claim</span>
+              </a>
+            </div>
+          </div>
+          <div className="col-md-4 ">
+            <div className="card-soft  blue-soft ">
+              <div className="card-soft-heading">
+                <strong className="card-soft-heading-title">
+                  View Claim(s)
+                </strong>
+              </div>
+              <div className="card-soft-content">
+                <p>View your submitted claim(s) below to access information</p>
+              </div>
+            </div>
+            <div className="button" style={{ marginTop: "1rem" }}>
+              <a
+                href="/view-claim"
+                className="btn btn-secondary btn-lg btn-block btn-icon-lg"
+              >
+                <i class="icon icon-read-book"></i>
+                <span>View Claim</span>
+              </a>
+            </div>
+          </div>
+          <div className="col-md-4 ">
+            <div className="card-soft  blue-soft ">
+              <div className="card-soft-heading">
+                <strong className="card-soft-heading-title">
+                  Search for A Claim
+                </strong>
+              </div>
+              <div className="card-soft-content">
+                <p>Insurers can search for claim(s) below to process claims</p>
+              </div>
+            </div>
+            <div className="button" style={{ marginTop: "1rem" }}>
+              <a
+                href="/search-claim"
+                className="btn btn-secondary btn-lg btn-block my-5 btn-icon-lg"
+              >
+                <i class="icon icon-search"></i>
+                <span>Search For A Claim</span>
+              </a>
+            </div>
+          </div>
         </div>
-    </footer>
-</div>
-        
-
-  
-
-      
-    );
-  }
+      </div>
+    </div>
+  );
 }
-
-export default Home;

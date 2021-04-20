@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import "../App.Insurer.css";
 //import axios from "axios";
 //import { Redirect } from "react-router";
-import JSONDATA from "./MOCK_DATA.json";
+
 import { useState } from "react";
 import { useHistory } from "react-router";
 import "../formLayout.css";

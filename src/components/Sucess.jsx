@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 
 class Success extends Component {
   state = {};

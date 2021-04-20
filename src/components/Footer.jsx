@@ -29,15 +29,9 @@ class Footer extends Component {
                   </a>
                 </li>
               </ul>
-              <p className="copyright">© The Hartford</p>
+              <p className="copyright">Prestige Worldwide</p>
             </div>
-            <div className="col-md-2">
-              <img
-                src="https://qawww.thehartford.com/sites/frontendstage/uxkit/demo/dist/images/norton.svg"
-                alt="Norton Secured - Powered by VeriSign"
-                className="norton"
-              />
-            </div>
+            <div className="col-md-2"></div>
           </div>
         </div>
       </footer>

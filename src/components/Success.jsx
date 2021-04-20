@@ -14,22 +14,26 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Success () {
+export default function Success() {
   return (
-    <div className='container'>
-      <ul className='breadcrumb'>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/submit-claim'>Submit Claim</Link></li>
-        <li className='active'>Success</li>
+    <div className="container">
+      <ul className="breadcrumb">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <a href="/submit-claim">Submit Claim</a>
+        </li>
+        <li className="active">Success</li>
       </ul>
 
-      <div className='card row top'>
+      <div className="card row top">
         <h1>Success</h1>
         <h6>Claim submitted without error</h6>
       </div>
     </div>
-  )
+  );
 }

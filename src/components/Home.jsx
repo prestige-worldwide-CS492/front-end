@@ -87,77 +87,73 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="row card top">
-        <div className="col-md-4">
-          <div className="card-soft blue-soft">
-            <div className="card-soft-heading">
-              <strong className="card-soft-heading-title">File A Claim</strong>
+      <div style={{ marginTop: "3rem" }} className="card top ">
+        <div className="row body-row mx-auto">
+          <div className="col-md-4 ">
+            <div className="card-soft  blue-soft ">
+              <div className="card-soft-heading">
+                <strong className="card-soft-heading-title">
+                  File A Claim
+                </strong>
+              </div>
+              <div className="card-soft-content">
+                <p>
+                  Fill out information regarding an auto-related insurance claim
+                </p>
+              </div>
             </div>
-
-            <div className="card-soft-content">
-              <p>
-                Fill out information regarding an auto-related insurance claim
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card-soft blue-soft">
-            <div className="card-soft-heading">
-              <strong className="card-soft-heading-title">View Claim(s)</strong>
-            </div>
-
-            <div className="card-soft-content">
-              <p>View your submitted claim(s) below to access information</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card-soft blue-soft">
-            <div className="card-soft-heading">
-              <strong className="card-soft-heading-title">
-                Search for A Claim
-              </strong>
-            </div>
-
-            <div className="card-soft-content">
-              <p>Insurer Search For Claim</p>
+            <div style={{ marginTop: "1rem" }} className=" button">
+              <a
+                href="/submit-claim"
+                className="btn btn-secondary btn-lg btn-block btn-icon-lg"
+              >
+                <i class="icon icon-edit"></i>
+                <span>Submit A Claim</span>
+              </a>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="row card">
-        <div className="col-md-4">
-          <a
-            className="btn btn-lg btn-secondary btn-block btn-icon-lg"
-            href="/submit-claim"
-          >
-            <i className="icon icon-edit" />
-            <span>Submit a Claim</span>
-          </a>
-        </div>
-
-        <div className="col-md-4">
-          <a
-            className="btn btn-lg btn-secondary btn-block btn-icon-lg"
-            href="/view-claim"
-          >
-            <i className="icon icon-read-book" />
-            <span>View a Claim</span>
-          </a>
-        </div>
-
-        <div className="col-md-4">
-          <a
-            className="btn btn-lg btn-secondary btn-block btn-icon-lg"
-            href="search-claim"
-          >
-            <i className="icon icon-search" />
-            <span>Search for a Claim</span>
-          </a>
+          <div className="col-md-4 ">
+            <div className="card-soft  blue-soft ">
+              <div className="card-soft-heading">
+                <strong className="card-soft-heading-title">
+                  View Claim(s)
+                </strong>
+              </div>
+              <div className="card-soft-content">
+                <p>View your submitted claim(s) below to access information</p>
+              </div>
+            </div>
+            <div className="button" style={{ marginTop: "1rem" }}>
+              <a
+                href="/view-claim"
+                className="btn btn-secondary btn-lg btn-block btn-icon-lg"
+              >
+                <i class="icon icon-read-book"></i>
+                <span>View Claim</span>
+              </a>
+            </div>
+          </div>
+          <div className="col-md-4 ">
+            <div className="card-soft  blue-soft ">
+              <div className="card-soft-heading">
+                <strong className="card-soft-heading-title">
+                  Search for A Claim
+                </strong>
+              </div>
+              <div className="card-soft-content">
+                <p>Insurers can search for claim(s) below to process claims</p>
+              </div>
+            </div>
+            <div className="button" style={{ marginTop: "1rem" }}>
+              <a
+                href="/search-claim"
+                className="btn btn-secondary btn-lg btn-block my-5 btn-icon-lg"
+              >
+                <i class="icon icon-search"></i>
+                <span>Search For A Claim</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

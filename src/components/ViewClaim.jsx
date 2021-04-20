@@ -27,6 +27,7 @@ export default function ViewClaim() {
   const history = useHistory();
 
   const searchHandler = (event) => {
+    event.preventDefault();
     let form = document.getElementById("form_id");
     let isValidForm = form.checkValidity();
     if (isValidForm) {
@@ -128,12 +129,7 @@ export default function ViewClaim() {
             </div>
           </div>
 
-          <input
-            type="submit"
-            value="View"
-            className="btn btn-secondary"
-            onClick={searchHandler}
-          />
+          <input type="submit" value="View" className="btn btn-secondary" />
         </form>
       </div>
 

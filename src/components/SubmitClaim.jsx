@@ -63,11 +63,11 @@ export default function SubmitClaim() {
       <div className="card row top">
         <form
           onSubmit={submitHandler}
+          id="form_id"
           className="form-selectors"
           data-toggle="validator"
           data-disable="true"
           data-delay="999999"
-          id="form_id"
         >
           <div className="row">
             <div className="col-md-4 form-group has-feedback">

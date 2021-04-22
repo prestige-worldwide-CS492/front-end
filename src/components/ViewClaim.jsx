@@ -56,6 +56,13 @@ export default function ViewClaim() {
       </ul>
 
       <div className="card row top">
+        <h2 className="underlined">
+          View your claim
+          <br />
+          <small style={{ color: "#3a5a78" }}>
+            All information is required unless it’s listed as optional.
+          </small>
+        </h2>
         <form
           onSubmit={searchHandler}
           id="form_id"

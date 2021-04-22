@@ -71,6 +71,13 @@ export default function SubmitClaim() {
       </ul>
 
       <div className="card row top">
+        <h2 className="underlined">
+          Submit your claim
+          <br />
+          <small style={{ color: "#3a5a78" }}>
+            All information is required unless it’s listed as optional.
+          </small>
+        </h2>
         <form
           onSubmit={submitHandler}
           id="form_id"

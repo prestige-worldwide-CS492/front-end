@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 export default function SubmitClaim() {
@@ -27,6 +27,7 @@ export default function SubmitClaim() {
 
   const history = useHistory();
 
+  const [loading, setLoading] = useState("");
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -34,6 +35,7 @@ export default function SubmitClaim() {
     let form = document.getElementById("form_id");
     let isValidForm = form.checkValidity();
     if (isValidForm) {
+      setLoading("Loading please wait...");
       const claim = {
         policy_number: policyNumber.current.value,
         first_name: firstName.current.value,
@@ -42,12 +44,20 @@ export default function SubmitClaim() {
         description: description.current.value,
         address: address.current.value,
       };
-
       fetch("http://localhost:8080/claims", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(claim),
-      }).then(() => history.replace("/success"));
+      })
+        .then(() => history.replace("/success"))
+        .catch((error) => {
+          console.log(error);
+          setLoading(
+            <h1 className="text-danger">
+              Server error, give us a call or please try again later!
+            </h1>
+          );
+        });
     }
   };
 
@@ -204,6 +214,7 @@ export default function SubmitClaim() {
           <input type="submit" value="Submit" className="btn btn-secondary" />
         </form>
       </div>
+      <div>{loading}</div>
     </div>
   );
 }

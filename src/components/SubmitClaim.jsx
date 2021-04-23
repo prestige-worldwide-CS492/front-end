@@ -156,30 +156,32 @@ export default function SubmitClaim() {
               <label htmlFor="category" className="control-label">
                 Choose a category
               </label>
-              <select
-                className="form-control"
-                name="category"
-                id="category"
-                ref={category}
-                required
-              >
-                <option value="Auto liability coverage">
-                  Auto Liability Coverage
-                </option>
-                <option value="Uninsured Motorist Coverage">
-                  Uninsured Motorist Coverage
-                </option>
-                <option value="Comprehensive Coverage">
-                  Comprehensive Coverage
-                </option>
-                <option value="Collision Coverage">Collision Coverage</option>
-                <option value="Medical Payments Coverage">
-                  Medical payments Coverage
-                </option>
-                <option value="Personal Injury Protection">
-                  Personal Injury Protection
-                </option>
-              </select>
+              <div class="select-container">
+                <select
+                  className="form-control"
+                  name="category"
+                  id="category"
+                  ref={category}
+                  required
+                >
+                  <option value="Auto liability coverage">
+                    Auto Liability Coverage
+                  </option>
+                  <option value="Uninsured Motorist Coverage">
+                    Uninsured Motorist Coverage
+                  </option>
+                  <option value="Comprehensive Coverage">
+                    Comprehensive Coverage
+                  </option>
+                  <option value="Collision Coverage">Collision Coverage</option>
+                  <option value="Medical Payments Coverage">
+                    Medical payments Coverage
+                  </option>
+                  <option value="Personal Injury Protection">
+                    Personal Injury Protection
+                  </option>
+                </select>
+              </div>
             </div>
 
             <div className="mt-3 col-md-6 form-group has-feedback">

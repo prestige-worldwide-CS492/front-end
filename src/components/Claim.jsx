@@ -21,7 +21,7 @@ export default function Claim ({ match }) {
   const [claim, setClaim] = useState({})
 
   useEffect(() => {
-    fetch(`${window.location.hostname}:8080/claims/${match.params.claimID}`)
+    fetch(`http://${window.location.hostname}:8080/claims/${match.params.claimID}`)
       .then(res => res.json())
       .then(res => setClaim(res))
   }, [match.params.claimID])
@@ -65,7 +65,7 @@ export default function Claim ({ match }) {
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-md-4'>
-              <img className='img-responsive' alt='map' src={`${window.location.hostname}:8080/claims/map/${match.params.claimID}`} />
+              <img className='img-responsive' alt='map' src={`http://${window.location.hostname}:8080/claims/map/${match.params.claimID}`} />
 
               <h6>Location</h6>
               <h2>{claim.address ?? 'Loading...'}</h2>

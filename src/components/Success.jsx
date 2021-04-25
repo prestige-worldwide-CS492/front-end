@@ -14,13 +14,26 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App.js'
+import React from "react";
+import { Link } from "react-router-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+export default function Success() {
+  return (
+    <div className="container">
+      <ul className="breadcrumb">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <a href="/submit-claim">Submit Claim</a>
+        </li>
+        <li className="active">Success</li>
+      </ul>
+
+      <div className="card row top">
+        <h1>Success</h1>
+        <h6>Claim submitted without error</h6>
+      </div>
+    </div>
+  );
+}

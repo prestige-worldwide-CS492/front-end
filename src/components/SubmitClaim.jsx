@@ -44,7 +44,7 @@ export default function SubmitClaim() {
         description: description.current.value,
         address: address.current.value,
       };
-      fetch("http://localhost:8080/claims", {
+      fetch(":8080/claims", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(claim),

@@ -36,7 +36,7 @@ export default function Claim ({ match }) {
 
       <div className='card row top'>
         <h3>CLAIM {match.params.claimID.toUpperCase()}</h3>
-        <h6 className='green'>Submitted on {claim.date ?? 'Loading...'}</h6>
+        <h6 className='green'>Submitted on {claim.dateSubmitted ?? 'Loading...'}</h6>
       </div>
 
       <div className='card row'>
@@ -70,8 +70,8 @@ export default function Claim ({ match }) {
               <h6>Location</h6>
               <h2>{claim.address ?? 'Loading...'}</h2>
 
-              <h6>Date</h6>
-              <h2>{claim.date ?? 'Loading...'}</h2>
+              <h6>Date Occurred</h6>
+              <h2>{claim.dateOccurred ?? 'Loading...'}</h2>
             </div>
 
             <div className='col-md-8'>

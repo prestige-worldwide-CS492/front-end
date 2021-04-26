@@ -24,6 +24,7 @@ export default function SubmitClaim() {
   const category = useRef(null);
   const description = useRef(null);
   const address = useRef(null);
+  const dateOccurred = useRef(null);
 
   const history = useHistory();
 
@@ -43,6 +44,7 @@ export default function SubmitClaim() {
         category: category.current.value,
         description: description.current.value,
         address: address.current.value,
+        date_occurred: dateOccurred.current.value,
       };
       fetch(`http://${window.location.hostname}:8080/claims`, {
         method: "POST",
@@ -152,7 +154,7 @@ export default function SubmitClaim() {
           </div>
 
           <div className="row">
-            <div className="mt-3 col-md-6 form-group has-feedback">
+            <div className="mt-3 col-md-4 form-group has-feedback">
               <label htmlFor="category" className="control-label">
                 Choose a category
               </label>
@@ -184,7 +186,24 @@ export default function SubmitClaim() {
               </div>
             </div>
 
-            <div className="mt-3 col-md-6 form-group has-feedback">
+            <div className="mt-3 col-md-4 form-group has-feedback">
+              <label htmlFor="date_occurred" className="control-label">
+                Date
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                ref={dateOccurred}
+                required
+              />
+              <span
+                className="icon icon-attention form-control-feedback"
+                aria-hidden="true"
+              />
+              <div className="help-block with-errors" />
+            </div>
+
+            <div className="mt-3 col-md-4 form-group has-feedback">
               <label htmlFor="full-address" className="control-label">
                 Address
               </label>

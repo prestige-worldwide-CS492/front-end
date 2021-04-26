@@ -192,6 +192,9 @@ export default function SubmitClaim() {
               </label>
               <input
                 type="date"
+                min="1900-01-01"
+                /* The date format is "yyyy-mm-dd" */
+                max={`${new Date().getUTCFullYear()}-${(new Date().getUTCMonth() + 1).toString().padStart(2,'0')}-${new Date().getUTCDate()}`}
                 className="form-control"
                 ref={dateOccurred}
                 required

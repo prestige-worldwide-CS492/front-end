@@ -15,7 +15,7 @@
  */
 
 import React from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import Claim from "./components/Claim.jsx";
 import Home from "./components/Home.jsx";
 import SearchClaim from "./components/SearchClaim.jsx";
@@ -29,13 +29,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar></Navbar>
-
-      <Route path="/" exact component={Home} />
-      <Route path="/submit-claim" component={SubmitClaim} />
-      <Route path="/view-claim" component={ViewClaim} />
-      <Route path="/search-claim" component={SearchClaim} />
-      <Route path="/claim/:claimID" component={Claim} />
-      <Route path="/success" component={Success} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/submit-claim" component={SubmitClaim} />
+        <Route path="/view-claim" component={ViewClaim} />
+        <Route path="/search-claim" component={SearchClaim} />
+        <Route path="/claim/:claimID" component={Claim} />
+        <Route path="/success" component={Success} />
+        <Route
+          path="*"
+          component={() => <div>Sorry can't find the page</div>}
+        />
+      </Switch>
 
       <Footer></Footer>
     </BrowserRouter>

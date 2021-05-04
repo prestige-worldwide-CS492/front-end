@@ -92,10 +92,23 @@ export default function Navbar() {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <a href="#">User Login</a>
+                      <a href="/login">Login</a>
                     </li>
                     <li>
-                      <a href="#">Account Information</a>
+                      <a href="/register">Register</a>
+                    </li>
+                    <li>
+                      <a
+                        href="/"
+                        onClick={() => {
+                          fetch(
+                            `http://${window.location.hostname}:8080/logout`,
+                            { method: "POST", credentials: "include" }
+                          );
+                        }}
+                      >
+                        Logout
+                      </a>
                     </li>
                   </ul>
                 </li>
@@ -173,21 +186,29 @@ export default function Navbar() {
                 </li>
 
                 <li className="visible-xs visible-sm">
-                  <a href="#">
+                  <a href="/login">
                     <i className="icon icon-my-account" />
-                    <span>My Profile</span>
+                    <span>Login</span>
                   </a>
                 </li>
                 <li className="visible-xs visible-sm">
-                  <a href="#">
+                  <a href="/register">
                     <i className="icon icon-questions" />
-                    <span>Help</span>
+                    <span>Register</span>
                   </a>
                 </li>
               </ul>
               <div className="mobile-logout">
-                <a href="#">
-                  <button className="btn btn-secondary-paired btn-block">
+                <a href="/">
+                  <button
+                    className="btn btn-secondary-paired btn-block"
+                    onClick={() => {
+                      fetch(`http://${window.location.hostname}:8080/logout`, {
+                        method: "POST",
+                        credentials: "include",
+                      });
+                    }}
+                  >
                     Logout
                   </button>
                 </a>

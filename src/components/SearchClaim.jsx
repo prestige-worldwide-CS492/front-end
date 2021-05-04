@@ -36,7 +36,12 @@ export default function SearchClaim() {
     if (policyNumber.current.value !== "")
       searchParams.set("policyNumber", policyNumber.current.value);
 
-    fetch(`http://${window.location.hostname}:8080/claims?${searchParams.toString()}`)
+    fetch(
+      `http://${
+        window.location.hostname
+      }:8080/insurer/claims?${searchParams.toString()}`,
+      { credentials: "include" }
+    )
       .then((res) => res.json())
       .then((res) => setClaims(res));
   };

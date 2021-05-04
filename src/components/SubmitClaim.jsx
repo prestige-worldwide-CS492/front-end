@@ -42,7 +42,7 @@ export default function SubmitClaim() {
     if (click == 0) {
       //make a call to the api
       //put the results into suggestions value using set suggestions.
-      fetch(`http://localhost:8080/address/${currValue}`)
+      fetch(`http://${window.location.hostname}:8080/address/${currValue}`)
         .then((response) => response.json())
         .then((json) => {
           setSuggestions(json.predictions);

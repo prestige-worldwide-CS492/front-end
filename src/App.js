@@ -24,7 +24,8 @@ import ViewClaim from "./components/ViewClaim.jsx";
 import Success from "./components/Success.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
 export default function App() {
   return (
     <BrowserRouter>
@@ -36,6 +37,9 @@ export default function App() {
         <Route path="/search-claim" component={SearchClaim} />
         <Route path="/claim/:claimID" component={Claim} />
         <Route path="/success" component={Success} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+
         <Route
           path="*"
           component={() => <div>Sorry can't find the page</div>}

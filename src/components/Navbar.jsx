@@ -71,14 +71,6 @@ export default function Navbar() {
                 </li>
               </ul>
               <ul className="nav navbar-nav navbar-icons navbar-right">
-                <li>
-                  <a href="#">
-                    <i className="icon icon-notifications">
-                      <span className="badge">24</span>
-                    </i>
-                    <span>Alerts</span>
-                  </a>
-                </li>
                 <li className="hidden-sm hidden-xs">
                   <a href="#">
                     <i className="icon icon-questions" />
@@ -130,39 +122,36 @@ export default function Navbar() {
                   <div className="dropdown-menu">
                     <div className="mega-menu">
                       <div className="col-md-6 mega-menu-left">
-                        <h3>Heading</h3>
+                        <h3>Links</h3>
                         <ul>
                           <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
+                            <a href="/">Home</a>
                           </li>
                           <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
+                            <a href="/submit-claim">Submit Claim</a>
                           </li>
                           <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
+                            <a href="view-claim">View Claim</a>
                           </li>
                           <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
+                            <a href="search-claim">Search Claim</a>
                           </li>
                         </ul>
                       </div>
                       <div className="col-md-6 mega-menu-right">
-                        <h3>Heading</h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit.
-                        </p>
+                        <h3>The Hartford</h3>
+                        <p>Overcoming Obstacles Together</p>
                         <img
-                          src="http://via.placeholder.com/350x200"
+                          src="https://s0.hfdstatic.com/sites/the_hartford/pubimgs/1444704513553.jpg?v=2020-11-04_100005734"
                           alt="play video"
                           className="img-responsive"
                         />
                         <ul>
                           <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
+                            {" "}
+                            <a href="https://www.thehartford.com/about-us/our-programs">
+                              We're here to put human beings first
+                            </a>
                           </li>
                         </ul>
                       </div>
@@ -171,7 +160,7 @@ export default function Navbar() {
                 </li>
                 <li className="dropdown">
                   <a
-                    href="#"
+                    href="/search-claim"
                     className="dropdown-toggle"
                     data-toggle="dropdown"
                     role="button"
@@ -179,68 +168,10 @@ export default function Navbar() {
                     aria-expanded="false"
                   >
                     <i className="icon icon-document" />
-                    <span>Claims (3)</span>
-                  </a>
-                  <div className="dropdown-menu">
-                    <div className="mega-menu">
-                      <div className="col-md-6 mega-menu-left">
-                        <h3>Heading</h3>
-                        <ul>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-md-6 mega-menu-right">
-                        <h3>Heading</h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit.
-                        </p>
-                        <img
-                          src="http://via.placeholder.com/350x200"
-                          alt="play video"
-                          className="img-responsive"
-                        />
-                        <ul>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                          <li>
-                            <a href="#">Lorem ipsum dolor amit</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="icon icon-benefits" />
-                    <span>Benefits</span>
+                    <span>Claims</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#">
-                    <i className="icon icon-folder" />
-                    <span>Documents</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="icon icon-billing" />
-                    <span>Billing</span>
-                  </a>
-                </li>
+
                 <li className="visible-xs visible-sm">
                   <a href="#">
                     <i className="icon icon-my-account" />

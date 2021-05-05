@@ -16,6 +16,7 @@
 
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "./autocomplete.css";
 
 export default function SubmitClaim() {
   const policyNumber = useRef(null);
@@ -23,11 +24,36 @@ export default function SubmitClaim() {
   const lastName = useRef(null);
   const category = useRef(null);
   const description = useRef(null);
-  const address = useRef(null);
+  //const address = useRef(null);
+  const dateOccurred = useRef(null);
 
   const history = useHistory();
 
   const [loading, setLoading] = useState("");
+  const [address, setAddress] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestion, setShow] = useState(false);
+  const [click, setClick] = useState(0);
+
+  const showSuggestions = (currValue) => {
+    //^^ for somme reason can't use the address1 react hook here .
+    setShow(true);
+    //only make call to api every other key stroke.
+    if (click == 0) {
+      //make a call to the api
+      //put the results into suggestions value using set suggestions.
+      fetch(`http://${window.location.hostname}:8080/address/${currValue}`)
+        .then((response) => response.json())
+        .then((json) => {
+          setSuggestions(json.predictions);
+        });
+      setClick(1);
+    } else {
+      //don't fetch
+      setClick(0);
+    }
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -42,9 +68,10 @@ export default function SubmitClaim() {
         last_name: lastName.current.value,
         category: category.current.value,
         description: description.current.value,
-        address: address.current.value,
+        address: address,
+        date_occurred: dateOccurred.current.value,
       };
-      fetch("http://localhost:8080/claims", {
+      fetch(`http://${window.location.hostname}:8080/claims`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(claim),
@@ -152,11 +179,11 @@ export default function SubmitClaim() {
           </div>
 
           <div className="row">
-            <div className="mt-3 col-md-6 form-group has-feedback">
+            <div className="mt-3 col-md-4 form-group has-feedback">
               <label htmlFor="category" className="control-label">
                 Choose a category
               </label>
-              <div class="select-container">
+              <div className="select-container">
                 <select
                   className="form-control"
                   name="category"
@@ -184,16 +211,68 @@ export default function SubmitClaim() {
               </div>
             </div>
 
-            <div className="mt-3 col-md-6 form-group has-feedback">
+            <div className="mt-3 col-md-4 form-group has-feedback">
+              <label htmlFor="date_occurred" className="control-label">
+                Date
+              </label>
+              <input
+                type="date"
+                min="1900-01-01"
+                /* The date format is "yyyy-mm-dd" */
+                max={`${new Date().getUTCFullYear()}-${(
+                  new Date().getUTCMonth() + 1
+                )
+                  .toString()
+                  .padStart(2, "0")}-${new Date().getUTCDate()}`}
+                className="form-control"
+                ref={dateOccurred}
+                required
+              />
+              <span
+                className="icon icon-attention form-control-feedback"
+                aria-hidden="true"
+              />
+              <div className="help-block with-errors" />
+            </div>
+
+            <div className="mt-3 col-md-4 form-group has-feedback">
               <label htmlFor="full-address" className="control-label">
                 Address
               </label>
-              <input
-                type="text"
-                className="form-control"
-                ref={address}
-                required
-              />
+              <div className="autocomplete">
+                <input
+                  type="text"
+                  className="form-control"
+                  value={address}
+                  autoComplete="nope"
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                    showSuggestions(e.target.value);
+                  }}
+                  onBlur={(e) => {
+                    setShow(false);
+                  }}
+                  required
+                />
+                <div className="autocomplete-items">
+                  {showSuggestion &&
+                    suggestions.map(
+                      (suggestion, i) =>
+                        i < 4 && (
+                          <div
+                            key={i}
+                            onMouseDown={() => {
+                              setAddress(suggestion.description);
+                              setShow(false);
+                            }}
+                          >
+                            {suggestion.description}
+                          </div>
+                        )
+                    )}
+                </div>
+              </div>
+
               <span
                 className="icon icon-attention form-control-feedback"
                 aria-hidden="true"

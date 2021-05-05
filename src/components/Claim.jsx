@@ -21,7 +21,7 @@ export default function Claim ({ match }) {
   const [claim, setClaim] = useState({})
 
   useEffect(() => {
-    fetch(`http://localhost:8080/claims/${match.params.claimID}`)
+    fetch(`http://${window.location.hostname}:8080/claims/${match.params.claimID}`)
       .then(res => res.json())
       .then(res => setClaim(res))
   }, [match.params.claimID])
@@ -36,7 +36,7 @@ export default function Claim ({ match }) {
 
       <div className='card row top'>
         <h3>CLAIM {match.params.claimID.toUpperCase()}</h3>
-        <h6 className='green'>Submitted on {claim.date ?? 'Loading...'}</h6>
+        <h6 className='green'>Submitted on {claim.dateSubmitted ?? 'Loading...'}</h6>
       </div>
 
       <div className='card row'>
@@ -65,13 +65,13 @@ export default function Claim ({ match }) {
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-md-4'>
-              <img className='img-responsive' alt='map' src={`http://localhost:8080/claims/map/${match.params.claimID}`} />
+              <img className='img-responsive' alt='map' src={`http://${window.location.hostname}:8080/claims/map/${match.params.claimID}`} />
 
               <h6>Location</h6>
               <h2>{claim.address ?? 'Loading...'}</h2>
 
-              <h6>Date</h6>
-              <h2>{claim.date ?? 'Loading...'}</h2>
+              <h6>Date Occurred</h6>
+              <h2>{claim.dateOccurred ?? 'Loading...'}</h2>
             </div>
 
             <div className='col-md-8'>

@@ -40,7 +40,7 @@ export default function ViewClaim() {
       if (policyNumber.current.value !== "")
         searchParams.set("policyNumber", policyNumber.current.value);
 
-      fetch(`http://localhost:8080/claims?${searchParams.toString()}`)
+      fetch(`http://${window.location.hostname}:8080/claims?${searchParams.toString()}`)
         .then((res) => res.json())
         .then((res) => setClaims(res));
     }

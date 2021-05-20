@@ -42,7 +42,7 @@ export default function SubmitClaim() {
     if (click == 0) {
       //make a call to the api
       //put the results into suggestions value using set suggestions.
-      fetch(`http://${window.location.hostname}:8080/address/${currValue}`)
+      fetch(`https://${window.location.hostname}:8080/address/${currValue}`)
         .then((response) => response.json())
         .then((json) => {
           setSuggestions(json.predictions);
@@ -71,7 +71,7 @@ export default function SubmitClaim() {
         address: address,
         date_occurred: dateOccurred.current.value,
       };
-      fetch(`http://${window.location.hostname}:8080/claims`, {
+      fetch(`https://${window.location.hostname}:8080/claims`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(claim),

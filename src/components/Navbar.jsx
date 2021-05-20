@@ -19,7 +19,7 @@ export default function Navbar() {
             <a className="navbar-brand" href="/">
               <img
                 alt="The Hartford"
-                src="https://ts0.hfdstatic.com/sites/higux/v3.3.44/images/logo.svg"
+                src="https://s0.hfdstatic.com/sites/the_hartford/img/logo.svg"
               />
             </a>
           </div>

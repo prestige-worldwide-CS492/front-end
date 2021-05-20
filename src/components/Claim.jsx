@@ -14,73 +14,89 @@
  * limitations under the License.
  */
 
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Claim ({ match }) {
-  const [claim, setClaim] = useState({})
+export default function Claim({ match }) {
+  const [claim, setClaim] = useState({});
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8080/claims/${match.params.claimID}`)
-      .then(res => res.json())
-      .then(res => setClaim(res))
-  }, [match.params.claimID])
+    fetch(
+      `https://${window.location.hostname}:8080/claims/${match.params.claimID}`
+    )
+      .then((res) => res.json())
+      .then((res) => setClaim(res));
+  }, [match.params.claimID]);
 
   return (
-    <div className='container'>
-      <ul className='breadcrumb'>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/search-claim'>Claims</Link></li>
-        <li className='active'>{match.params.claimID.toUpperCase()}</li>
+    <div className="container">
+      <ul className="breadcrumb">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/search-claim">Claims</Link>
+        </li>
+        <li className="active">{match.params.claimID.toUpperCase()}</li>
       </ul>
 
-      <div className='card row top'>
+      <div className="card row top">
         <h3>CLAIM {match.params.claimID.toUpperCase()}</h3>
-        <h6 className='green'>Submitted on {claim.dateSubmitted ?? 'Loading...'}</h6>
+        <h6 className="green">
+          Submitted on {claim.dateSubmitted ?? "Loading..."}
+        </h6>
       </div>
 
-      <div className='card row'>
-        <div className='container-fluid'>
-          <div className='row'>
-            <div className='col-md-4'>
+      <div className="card row">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-4">
               <h6>Insurance Holder</h6>
-              <h2>{claim.lastName ? `${claim.firstName} ${claim.lastName}` : 'Loading...'}</h2>
-              <h5>{claim.policyNumber ?? 'Loading...'}</h5>
+              <h2>
+                {claim.lastName
+                  ? `${claim.firstName} ${claim.lastName}`
+                  : "Loading..."}
+              </h2>
+              <h5>{claim.policyNumber ?? "Loading..."}</h5>
             </div>
 
-            <div className='col-md-4'>
+            <div className="col-md-4">
               <h6>Category of Claim</h6>
-              <h2>{claim.category ?? 'Loading...'}</h2>
+              <h2>{claim.category ?? "Loading..."}</h2>
             </div>
 
-            <div className='col-md-4'>
+            <div className="col-md-4">
               <h6>Status</h6>
-              <h2 className='green'>{claim.status ?? 'Loading...'}</h2>
+              <h2 className="green">{claim.status ?? "Loading..."}</h2>
             </div>
           </div>
         </div>
       </div>
 
-      <div className='card row'>
-        <div className='container-fluid'>
-          <div className='row'>
-            <div className='col-md-4'>
-              <img className='img-responsive' alt='map' src={`http://${window.location.hostname}:8080/claims/map/${match.params.claimID}`} />
+      <div className="card row">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-4">
+              <img
+                className="img-responsive"
+                alt="map"
+                src={`https://${window.location.hostname}:8080/claims/map/${match.params.claimID}`}
+              />
 
               <h6>Location</h6>
-              <h2>{claim.address ?? 'Loading...'}</h2>
+              <h2>{claim.address ?? "Loading..."}</h2>
 
               <h6>Date Occurred</h6>
-              <h2>{claim.dateOccurred ?? 'Loading...'}</h2>
+              <h2>{claim.dateOccurred ?? "Loading..."}</h2>
             </div>
 
-            <div className='col-md-8'>
+            <div className="col-md-8">
               <h2>Description</h2>
-              <p>{claim.description ?? 'Loading...'}</p>
+              <p>{claim.description ?? "Loading..."}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
